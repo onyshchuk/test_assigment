@@ -1,0 +1,41 @@
+import React, { Component } from 'react'
+import axios from '../../axios'
+
+class UserWindow extends Component {
+   state = {
+      name: '',
+      email: '',
+      photo: '',
+   }
+
+   componentDidMount() {
+      axios.get('users/1').then(response => {
+         this.setState({
+            name: response.data.user.name,
+            email: response.data.user.email,
+            photo: response.data.user.photo,
+         })
+      })
+   }
+
+   render() {
+      return (
+         <div className="user-window">
+            <div className="user-window__wrapper">
+               <div className="user-window__name">{this.state.name}</div>
+               <div className="user-window__email">{this.state.email}</div>
+            </div>
+            <img
+               className="user-window__photo"
+               src={this.state.photo}
+               alt={this.state.name}
+            />
+            <a href="#" className="user-window__signout">
+               <img src="./icons/sign-out.svg" alt="signout" />
+            </a>
+         </div>
+      )
+   }
+}
+
+export default UserWindow
