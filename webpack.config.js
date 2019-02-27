@@ -1,3 +1,4 @@
+/*global require module __dirname*/
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -5,7 +6,7 @@ module.exports = (env, options) => {
    const isProduction = options.mode === 'production'
 
    return {
-      entry: ['@babel/polyfill', './src/app.js'],
+      entry: './src/app.js',
       output: {
          path: path.join(__dirname, 'public', 'dist'),
          filename: 'bundle.js',
@@ -37,6 +38,13 @@ module.exports = (env, options) => {
       devtool: isProduction ? 'source-map' : 'inline-source-map',
       devServer: {
          overlay: true,
+         proxy: {
+            '/api/v1/**': {
+               target: 'https://frontend-test-assignment-api.abz.agency/',
+               secure: false,
+               changeOrigin: true,
+            },
+         },
          contentBase: path.join(__dirname, 'public'),
          historyApiFallback: true,
          publicPath: '/dist/',
