@@ -1,0 +1,12 @@
+{
+   "name": "test_assigment",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "dev": "webpack-dev-server --mode development --open",
+      "build": "webpack --mode production"
+   },
+   "author": "",
+   "license": "ISC"
+}
