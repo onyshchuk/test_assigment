@@ -1,0 +1,37 @@
+.header {
+   // select container which is first div inside header
+   & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 1.2rem 0;
+   }
+
+   &__logo {
+      height: 2.4rem;
+   }
+
+   &__navigation {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      margin: 0 5rem;
+
+      & ul {
+         display: flex;
+         flex-grow: 1;
+         justify-content: space-around;
+         list-style: none;
+
+         li a,
+         li a:link,
+         li a:visited {
+            text-decoration: none;
+            color: $color-black;
+         }
+      }
+   }
+}
+
+@import './userWindow';
