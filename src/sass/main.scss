@@ -1,14 +1,24 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=Overpass:600|Source+Sans+Pro:400,700');
+
+// ABSTRACT
 @import 'abstracts/functions';
 @import 'abstracts/mixins';
 @import 'abstracts/variables';
 
+// BASE
 @import 'base/animations';
 @import 'base/base';
 @import 'base/typography';
 @import 'base/uilities';
 
+// COMPONENTS
+@import 'components/Header/header';
+
+// LAYOUT
 @import 'layout/footer';
 @import 'layout/grid';
 @import 'layout/header';
 
+// PAGES
 @import 'pages/home';
