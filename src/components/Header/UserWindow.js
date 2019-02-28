@@ -10,9 +10,12 @@ class UserWindow extends Component {
 
    componentDidMount() {
       axios.get('users/1').then(response => {
+         // first char of email to uppercase
+         let email = response.data.user.email
+         email = email.charAt(0).toUpperCase() + email.slice(1)
          this.setState({
             name: response.data.user.name,
-            email: response.data.user.email,
+            email,
             photo: response.data.user.photo,
          })
       })
