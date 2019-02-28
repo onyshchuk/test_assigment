@@ -1,0 +1,20 @@
+.section-banner {
+   height: 72.5rem;
+   background: url(/images/bg-1.jpg) no-repeat;
+   background-size: 130%;
+   padding: 13.3rem 0;
+
+   .heading-1 {
+      width: 50%;
+      margin: 0 0 1.9rem -2px;
+   }
+
+   p {
+      width: 48%;
+      margin-bottom: 3.9rem;
+   }
+
+   .Button__primary {
+      width: 290px;
+   }
+}
