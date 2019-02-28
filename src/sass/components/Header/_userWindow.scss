@@ -4,11 +4,11 @@
 
    // wrapper for name and email
    &__wrapper {
-      margin-left: 1rem; // this margin is just to follow the pixel perfect
+      margin-left: 5px; // for PP
       text-align: right;
       display: flex;
       flex-flow: column;
-      justify-content: space-around;
+      justify-content: space-between;
    }
 
    &__photo {
@@ -21,6 +21,7 @@
    &__email {
       font-size: 1.2rem;
       color: $color-grey-1;
+      margin: 4px 2px 0 0;
    }
 
    &__name {
