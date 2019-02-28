@@ -1,0 +1,28 @@
+.section-aboutme {
+   padding: 13.5rem 0 12.5rem 0;
+
+   .heading-2 {
+      text-align: center;
+      margin-bottom: 2.3rem;
+   }
+
+   .aboutme {
+      &__wrapper {
+         display: flex;
+
+         img {
+            margin-right: 2.8rem;
+         }
+
+         h3 {
+            margin-top: 2.3rem;
+         }
+
+         p {
+            width: 100.05%;
+            margin: 0.8rem 0 1.7rem 2px;
+            line-height: 1.38;
+         }
+      }
+   }
+}
