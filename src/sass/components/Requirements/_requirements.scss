@@ -1,0 +1,19 @@
+.section-requirements {
+   background: url(/../images/bg-2.jpg) no-repeat;
+   background-size: 111%;
+   margin-top: 13.8rem;
+   padding: 13.5rem 0 15.4rem 0;
+
+   .heading-2 {
+      text-align: center;
+      margin-bottom: 3.9rem;
+   }
+
+   .requirements__wrapper {
+      display: flex;
+
+      img {
+         margin: 1.5rem 0 0 5rem;
+      }
+   }
+}
