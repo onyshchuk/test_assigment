@@ -13,12 +13,14 @@
 @import 'base/uilities';
 
 // COMPONENTS
+@import 'components/AboutMe/aboutMe';
+@import 'components/Banner/banner';
 @import 'components/Header/header';
+@import 'components/Relationships/relationships';
+@import 'components/Requirements/requirements';
 
 // LAYOUT
-@import 'layout/footer';
 @import 'layout/grid';
-@import 'layout/header';
 
 // PAGES
 @import 'pages/home';
