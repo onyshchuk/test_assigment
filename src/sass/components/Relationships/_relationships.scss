@@ -1,0 +1,46 @@
+.section-relationships {
+   .heading-2 {
+      width: 60%;
+      margin: 0 auto 4.6rem auto;
+      text-align: center;
+   }
+
+   .relationships {
+      &__wrapper {
+         display: flex;
+      }
+      &__card {
+         flex: 1;
+
+         &:not(:last-child) {
+            margin-right: 3rem;
+         }
+
+         // its messy with this paragraphs, but in order
+         // to get pixel perfect with text i had to do that
+         // plus on your design pictures a bit different in size
+         // but I really didn't want to make different sizing for them
+         &:nth-child(2) {
+            p {
+               width: 85%;
+               margin-left: 1px;
+            }
+         }
+
+         &:nth-child(3) {
+            p {
+               width: 95%;
+               margin-left: 2px;
+            }
+         }
+
+         .heading-3 {
+            margin: 2.3rem 0 1rem 0;
+         }
+
+         p {
+            white-space: pre-wrap;
+         }
+      }
+   }
+}
