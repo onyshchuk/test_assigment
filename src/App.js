@@ -6,6 +6,7 @@ import Banner from './components/Banner'
 import AboutMe from './components/AboutMe'
 import Relationships from './components/Relationships/'
 import Requirements from './components/Requirements'
+import Users from './components/Users'
 
 class App extends Component {
    render() {
@@ -23,6 +24,9 @@ class App extends Component {
             </Element>
             <Element name="requirements">
                <Requirements />
+            </Element>
+            <Element name="users">
+               <Users />
             </Element>
          </div>
       )
