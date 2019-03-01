@@ -1,0 +1,45 @@
+.section-users {
+   padding: 13.6rem 0;
+
+   .heading-2 {
+      text-align: center;
+      margin-bottom: 1.4rem;
+   }
+
+   .users {
+      &__semiheading {
+         text-align: center;
+         margin-bottom: 6rem;
+      }
+
+      &__wrapper {
+         display: flex;
+         flex-wrap: wrap;
+
+         .user-card {
+            display: flex;
+            width: 29%;
+            align-items: stretch;
+            overflow: hidden;
+            margin-bottom: 6rem;
+
+            &:not(:nth-child(3n)) {
+               margin-right: 5.5%;
+            }
+
+            img {
+               width: 7rem;
+               height: 7rem;
+               border-radius: 50%;
+               margin-right: 0.7rem;
+            }
+
+            &__info {
+               .heading-4 {
+                  margin: 2.7rem 0 1rem 0;
+               }
+            }
+         }
+      }
+   }
+}
