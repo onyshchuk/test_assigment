@@ -1,5 +1,6 @@
 // FONTS
-@import url('https://fonts.googleapis.com/css?family=Overpass:600|Source+Sans+Pro:400,700');
+@import url('https://fonts.googleapis.com/css?family=Overpass:600|Source+Sans+Pro:400,700|PT+Sans');
+// PT Sans is on the section Our cheerful users, not sure if it should be loaded
 
 // ABSTRACT
 @import 'abstracts/functions';
@@ -18,6 +19,7 @@
 @import 'components/Header/header';
 @import 'components/Relationships/relationships';
 @import 'components/Requirements/requirements';
+@import 'components/Users/users';
 
 // LAYOUT
 @import 'layout/grid';
