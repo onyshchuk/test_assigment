@@ -17,6 +17,7 @@ const styles = () => ({
       padding: 0,
       '&:hover': {
          color: variables.colorPrimaryLighter,
+         backgroundColor: 'transparent',
       },
    },
 })
