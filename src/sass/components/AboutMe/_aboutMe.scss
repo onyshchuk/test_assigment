@@ -4,24 +4,40 @@
    .heading-2 {
       text-align: center;
       margin-bottom: 2.3rem;
+      @include oneLineEllipsis;
    }
 
    .aboutme {
       &__wrapper {
          display: flex;
 
+         // select right wrapper
+         & > div {
+            // max width of wrapper 100% - image width + image margin right
+            max-width: calc(100% - 31.5rem);
+         }
+
          img {
             margin-right: 2.8rem;
          }
 
          h3 {
+            width: 100%;
             margin-top: 2.3rem;
+            @include oneLineEllipsis;
          }
 
          p {
-            width: 100.05%;
-            margin: 0.8rem 0 1.7rem 2px;
-            line-height: 1.38;
+            height: 15.4rem;
+            width: 100.2%;
+            margin: 0.8rem 0 1.75rem 2px;
+            overflow-wrap: break-word;
+            word-break: break-word;
+         }
+
+         button {
+            max-width: 100%;
+            height: 3rem;
          }
       }
    }
