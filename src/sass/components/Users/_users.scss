@@ -1,15 +1,19 @@
 .section-users {
-   padding: 13.6rem 0;
+   padding: 13.6rem 0 15.7rem 0;
 
    .heading-2 {
+      max-width: 100%;
       text-align: center;
       margin-bottom: 1.4rem;
+      @include oneLineEllipsis;
    }
 
    .users {
       &__semiheading {
+         max-width: 100%;
          text-align: center;
          margin-bottom: 6rem;
+         @include oneLineEllipsis;
       }
 
       &__wrapper {
@@ -21,25 +25,53 @@
             width: 29%;
             align-items: stretch;
             overflow: hidden;
-            margin-bottom: 6rem;
+            margin-bottom: 5.7rem;
 
             &:not(:nth-child(3n)) {
                margin-right: 5.5%;
             }
 
             img {
+               margin-right: 0.7rem;
                width: 7rem;
                height: 7rem;
+
                border-radius: 50%;
-               margin-right: 0.7rem;
             }
 
             &__info {
+               width: calc(100% - 7.7rem);
+
                .heading-4 {
+                  width: 100%;
                   margin: 2.7rem 0 1rem 0;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+               }
+
+               p {
+                  color: $color-grey-5;
+               }
+
+               p:nth-child(2) {
+                  max-width: 100%;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+               }
+
+               p:nth-child(3),
+               p:nth-child(4) {
+                  @include oneLineEllipsis;
                }
             }
          }
+      }
+
+      &__button {
+         display: block;
+         width: 29rem;
+         max-height: 4rem;
+         margin: 0 auto;
       }
    }
 }
