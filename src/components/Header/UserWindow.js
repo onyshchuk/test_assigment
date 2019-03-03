@@ -25,8 +25,12 @@ class UserWindow extends Component {
       return (
          <div className="user-window">
             <div className="user-window__wrapper">
-               <div className="user-window__name">{this.state.name}</div>
-               <div className="user-window__email">{this.state.email}</div>
+               <div className="user-window__name" title={this.state.name}>
+                  {this.state.name}
+               </div>
+               <div className="user-window__email" title={this.state.email}>
+                  {this.state.email}
+               </div>
             </div>
             <img
                className="user-window__photo"
