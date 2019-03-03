@@ -3,8 +3,11 @@
 
    .heading-2 {
       width: 60%;
+      height: 10rem;
       margin: 0 auto 4.6rem auto;
       text-align: center;
+      overflow-wrap: break-word;
+      word-break: break-word;
    }
 
    .relationships {
@@ -13,6 +16,7 @@
       }
       &__card {
          flex: 1;
+         max-width: 33%;
 
          &:not(:last-child) {
             margin-right: 3rem;
@@ -38,10 +42,14 @@
 
          .heading-3 {
             margin: 2.3rem 0 1rem 0;
+            @include oneLineEllipsis;
          }
 
          p {
             white-space: pre-wrap;
+            max-height: 11rem;
+            overflow-wrap: break-word;
+            word-break: break-word;
          }
       }
    }
