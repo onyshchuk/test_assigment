@@ -7,52 +7,11 @@
 }
 
 // this mixin will prevent single line overflow
+// only for block element
 @mixin oneLineEllipsis {
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
-}
-
-// for this mixine the target should has two div outside
-// and mixin should be applied to the outer div
-// outer div shoud has
-// overflow: hidden;
-// height:
-// width:
-// line-height: 25px;
-@mixin handleOverflow($height) {
-   &:before {
-      content: '';
-      float: left;
-      width: 5px;
-      height: 200px;
-   }
-
-   & > *:first-child {
-      float: right;
-      width: 100%;
-      margin-left: -5px;
-   }
-
-   &:after {
-      content: '\02026';
-      box-sizing: content-box;
-      float: right;
-      position: relative;
-      top: -25px;
-      left: 100%;
-      width: 3em;
-      margin-left: -3em;
-      padding-right: 5px;
-      text-align: right;
-      background-size: 100% 100%;
-      background: linear-gradient(
-         to right,
-         rgba(255, 255, 255, 0),
-         white 50%,
-         white
-      );
-   }
 }
 
 // MEDIA QUERY MANAGER
