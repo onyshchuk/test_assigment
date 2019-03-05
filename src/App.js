@@ -7,6 +7,7 @@ import AboutMe from './components/AboutMe'
 import Relationships from './components/Relationships/'
 import Requirements from './components/Requirements'
 import Users from './components/Users'
+import SignUp from './components/SignUp/'
 
 class App extends Component {
    render() {
@@ -27,6 +28,9 @@ class App extends Component {
             </Element>
             <Element name="users">
                <Users />
+            </Element>
+            <Element name="signup">
+               <SignUp />
             </Element>
          </div>
       )
