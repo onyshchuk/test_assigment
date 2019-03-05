@@ -52,6 +52,12 @@ body {
    }
 }
 
+.section-aboutme {
+   p {
+      line-height: 1.38;
+   }
+}
+
 .section-relationships {
    p {
       line-height: 1.4;
@@ -74,6 +80,14 @@ body {
    .user-card {
       p {
          line-height: 1.35;
+      }
+   }
+}
+
+.section-signup {
+   .form {
+      label {
+         font-size: 1.6rem;
       }
    }
 }
