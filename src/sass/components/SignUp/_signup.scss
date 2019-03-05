@@ -1,0 +1,44 @@
+.section-signup {
+   padding-bottom: 15rem;
+
+   .heading-2 {
+      text-align: center;
+      margin-bottom: 1.4rem;
+   }
+
+   .signup {
+      &__semiheading {
+         text-align: center;
+         margin-bottom: 4.8rem;
+      }
+   }
+
+   .heading-2,
+   .signup__semiheading {
+      max-width: 100%;
+      @include oneLineEllipsis;
+   }
+
+   .form {
+      &__input {
+         width: 31%;
+         margin-bottom: 4rem;
+
+         &--email {
+            width: 31.5%;
+         }
+
+         &:not(:nth-child(3)) {
+            margin-right: 3rem;
+         }
+      }
+
+      &__select {
+         width: 48.5%;
+      }
+
+      &__upload {
+         display: inline-block;
+      }
+   }
+}
