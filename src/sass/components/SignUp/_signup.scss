@@ -39,6 +39,18 @@
 
       &__upload {
          display: inline-block;
+         margin-left: 3rem;
+         width: calc(51.5% - 3rem);
+
+         & > div {
+            display: flex;
+         }
+      }
+
+      &__submit {
+         display: block;
+         margin: 4.1rem auto 0 auto;
+         width: 29rem;
       }
    }
 }
