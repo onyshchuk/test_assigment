@@ -81,14 +81,17 @@ class Users extends Component {
                      />
                   ))}
                </div>
-               <SecondaryButton
-                  id={this.buttonID}
-                  onClick={this.handleClick}
-                  className="users__button"
-                  disabled={this.state.disabled}
-               >
-                  Show more
-               </SecondaryButton>
+               {this.state.disabled ? (
+                  false
+               ) : (
+                  <SecondaryButton
+                     id={this.buttonID}
+                     onClick={this.handleClick}
+                     className="users__button"
+                  >
+                     Show more
+                  </SecondaryButton>
+               )}
             </div>
          </section>
       )
