@@ -5,6 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import MenuItem from '@material-ui/core/MenuItem'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import variables from './../../sass/abstracts/_variables.scss'
 import axios from '../../axios'
 
@@ -21,6 +22,13 @@ const styles = () => ({
       top: 'calc(50% - 2.4rem)',
       right: '5px',
    },
+   helperText: {
+      color: '#f44336',
+      fontFamily: variables.fontPrimary,
+      fontSize: '1.2rem',
+      margin: '6px 16px -18px',
+      letterSpacing: '0.03px',
+   },
 })
 
 class Position extends Component {
@@ -29,26 +37,37 @@ class Position extends Component {
 
       this.state = {
          positions: [],
-         position: '',
+         error: '',
+         open: false,
       }
    }
+
    componentDidMount() {
       axios.get('positions').then(response => {
          const positions = response.data.positions
          this.setState({ positions })
       })
    }
-   handleChange = e => {
-      const position = e.target.value
-      this.setState({ position })
+
+   handleClose = e => {
+      let error = ''
+      if (e.target.value === undefined && this.props.value === '')
+         error = 'Position is required'
+      this.props.isValid(!error)
+      this.setState({ open: false, error })
    }
+
    render() {
-      const { typography, input, icon } = this.props.classes
+      const { typography, input, icon, helperText } = this.props.classes
       return (
          <FormControl variant="outlined" className={this.props.className}>
             <Select
-               value={this.state.position}
-               onChange={this.handleChange}
+               value={this.props.value}
+               open={this.state.open}
+               onOpen={() => this.setState({ open: true })}
+               onClose={this.handleClose}
+               onChange={this.props.onChange}
+               error={!!this.state.error}
                input={
                   <OutlinedInput
                      labelWidth={0}
@@ -72,6 +91,9 @@ class Position extends Component {
                   </MenuItem>
                ))}
             </Select>
+            <FormHelperText classes={{ root: helperText }}>
+               {this.state.error}
+            </FormHelperText>
          </FormControl>
       )
    }
@@ -80,6 +102,9 @@ class Position extends Component {
 Position.propTypes = {
    classes: PropTypes.object.isRequired,
    className: PropTypes.string,
+   onChange: PropTypes.func.isRequired,
+   isValid: PropTypes.func.isRequired,
+   value: PropTypes.string,
 }
 
 export default withStyles(styles)(Position)
