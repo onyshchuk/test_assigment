@@ -1,3 +1,4 @@
+/* global Image */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -53,6 +54,15 @@ class UploadPhoto extends Component {
       if (fileType !== 'jpg' && fileType !== 'jpeg')
          error = 'file format must be jpg'
       if (file.size > 5120000) error = 'Max file size is 5 MB'
+      const img = new Image()
+      img.src = window.URL.createObjectURL(file)
+      img.onload = () => {
+         if (img.width < 70 || img.height < 70) {
+            this.setState({ photoName: '', error: 'resolution is too low' })
+            this.props.onChange({ target: { value: '' } })
+         }
+      }
+
       return error
    }
 
@@ -67,7 +77,7 @@ class UploadPhoto extends Component {
             this.setState({ photoName, error })
             this.props.onChange({ target: { value: file } })
          } else {
-            this.setState({ error })
+            this.setState({ photoName: '', error })
             this.props.onChange({ target: { value: '' } })
          }
       }
