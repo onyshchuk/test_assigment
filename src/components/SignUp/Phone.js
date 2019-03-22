@@ -33,7 +33,7 @@ class Phone extends Component {
       this.inp = React.createRef()
       this.state = {
          phone: '',
-         textmask: '+38 (___) ___ __ __',
+         textmask: '+38 (0__) ___ __ __',
          cursorPosition: 5,
          error: '',
       }
@@ -78,7 +78,7 @@ class Phone extends Component {
          <TextField
             className={className}
             label="Phone"
-            placeholder="+38 (___) ___ __ __"
+            placeholder="+38 (0__) ___ __ __"
             margin="normal"
             variant="outlined"
             value={this.state.textmask}
