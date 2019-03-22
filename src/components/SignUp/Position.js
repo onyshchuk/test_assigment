@@ -85,7 +85,7 @@ class Position extends Component {
                   <MenuItem
                      key={position.id}
                      classes={{ root: typography }}
-                     value={position.name}
+                     value={position.id}
                   >
                      {position.name}
                   </MenuItem>
