@@ -37,10 +37,10 @@ class Name extends Component {
       const name = this.props.value.trim()
       let error = ''
       if (name) {
-         if (name.length >= 3) {
+         if (name.length >= 2 && name.length <= 60) {
             if (!/^[a-z ,.'-]+$/i.test(name))
                error = "Name should include only letters and , . ' -"
-         } else error = 'Name should be at least 3 characters long'
+         } else error = 'Name should be 2-60 characters long'
       } else error = 'Name is required'
       this.setState({ error })
       isValid(!error)
