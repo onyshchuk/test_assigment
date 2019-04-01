@@ -8,8 +8,65 @@ import Relationships from './components/Relationships/'
 import Requirements from './components/Requirements'
 import Users from './components/Users'
 import SignUp from './components/SignUp/'
+import axios from './axios'
 
 class App extends Component {
+   constructor(props) {
+      super(props)
+
+      this.state = {
+         users: [],
+         next: null,
+      }
+   }
+   loadFirstUsersPage() {
+      axios.get('users?page=1&count=6').then(response => {
+         let next = response.data.links.next_url.split('/v1/')[1]
+         let users = response.data.users.sort(
+            (a, b) => b.registration_timestamp - a.registration_timestamp
+         )
+         this.setState({
+            users,
+            next,
+         })
+      })
+   }
+   componentDidMount() {
+      this.loadFirstUsersPage()
+   }
+   handleUsersClick = () => {
+      if (this.state.next) {
+         axios.get(this.state.next).then(response => {
+            let nextLink = response.data.links.next_url
+            let next =
+               nextLink === null
+                  ? null
+                  : response.data.links.next_url.split('/v1/')[1]
+            let newUsers = response.data.users.sort(
+               (a, b) => b.registration_timestamp - a.registration_timestamp
+            )
+            this.setState(({ users }) => ({
+               users: [...users, ...newUsers],
+               next,
+            }))
+         })
+      }
+   }
+   handleFormSubmit = (e, formData) => {
+      e.preventDefault()
+
+      axios
+         .get('token')
+         .then(response => {
+            const token = response.data.token
+            return axios.post('users', formData, {
+               headers: { Token: token },
+            })
+         })
+         .then(response => {
+            if (response.data.success) this.loadFirstUsersPage()
+         })
+   }
    render() {
       return (
          <div className="App">
@@ -27,10 +84,14 @@ class App extends Component {
                <Requirements />
             </Element>
             <Element name="users">
-               <Users />
+               <Users
+                  users={this.state.users}
+                  next={this.state.next}
+                  handleUsersClick={this.handleUsersClick}
+               />
             </Element>
             <Element name="signup">
-               <SignUp />
+               <SignUp handleFormSubmit={this.handleFormSubmit} />
             </Element>
          </div>
       )
