@@ -1,14 +1,14 @@
 /* global FormData */
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Name from './Name'
 import Email from './Email'
 import Phone from './Phone'
 import Position from './Position'
 import UploadPhoto from './UploadPhoto'
 import PrimaryButton from '../Buttons/PrimaryButton'
-import axios from '../../axios'
 
-class From extends Component {
+class Form extends Component {
    state = {
       name: '',
       nameValid: false,
@@ -29,29 +29,15 @@ class From extends Component {
    isValid = stateName => valid => {
       this.setState({ [stateName]: valid })
    }
-
    handleSubmit = e => {
-      e.preventDefault()
       const formData = new FormData()
       formData.append('name', this.state.name)
       formData.append('email', this.state.email)
       formData.append('phone', this.state.phone)
       formData.append('position_id', this.state.position)
       formData.append('photo', this.state.photo)
-
-      axios
-         .get('token')
-         .then(response => {
-            const token = response.data.token
-            return axios.post('users', formData, {
-               headers: { Token: token },
-            })
-         })
-         .then(response => {
-            console.log(response)
-         })
+      this.props.handleFormSubmit(e, formData)
    }
-
    render() {
       const buttonDisabled =
          !this.state.nameValid ||
@@ -107,4 +93,8 @@ class From extends Component {
    }
 }
 
-export default From
+Form.propTypes = {
+   handleFormSubmit: PropTypes.func,
+}
+
+export default Form
