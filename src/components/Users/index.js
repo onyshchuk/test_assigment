@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import PropTypes from 'prop-types'
 import Card from './Card'
 import SecondaryButton from '../Buttons/SecondaryButton'
 import { nodeEllipsize } from '../../utility/ellipsize'
@@ -8,52 +8,12 @@ class Users extends Component {
    constructor(props) {
       super(props)
 
-      this.state = {
-         users: [],
-         next: null,
-         disabled: false,
-      }
-
       this.buttonID = 'usersButton'
    }
-
    componentDidMount() {
-      axios.get('users?page=1&count=6').then(response => {
-         let next = response.data.links.next_url.split('/v1/')[1]
-         let users = response.data.users.sort(
-            (a, b) => b.registration_timestamp - a.registration_timestamp
-         )
-         this.setState({
-            users,
-            next,
-         })
-      })
       const button = document.getElementById(this.buttonID)
-      nodeEllipsize(button.firstElementChild, button)
+      if (button) nodeEllipsize(button.firstElementChild, button)
    }
-
-   handleClick = () => {
-      if (this.state.next) {
-         axios.get(this.state.next).then(response => {
-            let nextLink = response.data.links.next_url
-            let next =
-               nextLink === null
-                  ? null
-                  : response.data.links.next_url.split('/v1/')[1]
-            let newUsers = response.data.users.sort(
-               (a, b) => b.registration_timestamp - a.registration_timestamp
-            )
-            this.setState(({ users }) => ({
-               users: [...users, ...newUsers],
-               next,
-            }))
-            if (!this.state.next) {
-               this.setState({ disabled: true })
-            }
-         })
-      }
-   }
-
    render() {
       return (
          <section className="section-users">
@@ -68,7 +28,7 @@ class Users extends Component {
                   Attention! Sorting users by registration date
                </p>
                <div className="users__wrapper">
-                  {this.state.users.map(user => (
+                  {this.props.users.map(user => (
                      <Card
                         key={user.id}
                         idSuffix={user.id}
@@ -81,21 +41,27 @@ class Users extends Component {
                      />
                   ))}
                </div>
-               {this.state.disabled ? (
-                  false
-               ) : (
+               {this.props.next ? (
                   <SecondaryButton
                      id={this.buttonID}
-                     onClick={this.handleClick}
+                     onClick={this.props.handleUsersClick}
                      className="users__button"
                   >
                      Show more
                   </SecondaryButton>
+               ) : (
+                  false
                )}
             </div>
          </section>
       )
    }
+}
+
+Users.propTypes = {
+   users: PropTypes.array,
+   next: PropTypes.string,
+   handleUsersClick: PropTypes.func,
 }
 
 export default Users
