@@ -1,7 +1,8 @@
 import React from 'react'
-import Form from './From'
+import PropTypes from 'prop-types'
+import Form from './Form'
 
-const SignUp = () => {
+const SignUp = props => {
    return (
       <section className="section-signup">
          <div className="container">
@@ -10,10 +11,14 @@ const SignUp = () => {
                Attention! After successful registration and alert, update the
                list of users in the block from the top
             </p>
-            <Form />
+            <Form handleFormSubmit={props.handleFormSubmit} />
          </div>
       </section>
    )
+}
+
+SignUp.propTypes = {
+   handleFormSubmit: PropTypes.func,
 }
 
 export default SignUp
