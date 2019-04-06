@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Navigation = () => {
+const Navigation = props => {
    return (
-      <nav className="header__navigation">
+      <nav className={props.className}>
          <ul>
             <li>
                <a href="#" title="About me">
@@ -32,6 +33,10 @@ const Navigation = () => {
          </ul>
       </nav>
    )
+}
+
+Navigation.propTypes = {
+   className: PropTypes.string,
 }
 
 export default Navigation
