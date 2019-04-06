@@ -7,6 +7,7 @@ import Phone from './Phone'
 import Position from './Position'
 import UploadPhoto from './UploadPhoto'
 import PrimaryButton from '../Buttons/PrimaryButton'
+import Modal from './Modal'
 
 class Form extends Component {
    state = {
@@ -88,6 +89,10 @@ class Form extends Component {
             >
                Sign Up
             </PrimaryButton>
+            <Modal
+               open={this.props.openModal}
+               handleModalClose={this.props.handleModalClose}
+            />
          </form>
       )
    }
@@ -95,6 +100,8 @@ class Form extends Component {
 
 Form.propTypes = {
    handleFormSubmit: PropTypes.func,
+   openModal: PropTypes.bool,
+   handleModalClose: PropTypes.func,
 }
 
 export default Form
