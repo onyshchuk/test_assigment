@@ -91,3 +91,13 @@ body {
       }
    }
 }
+
+.footer {
+   &__contacts {
+      font-size: 2rem;
+   }
+
+   &__copyright {
+      font-size: 1.2rem;
+   }
+}
