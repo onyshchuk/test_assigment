@@ -11,7 +11,7 @@ const Header = () => {
                src="./images/logo.svg"
                alt="avz.agency"
             />
-            <Navigation />
+            <Navigation className="header__navigation" />
             <UserWindow />
          </div>
       </header>
