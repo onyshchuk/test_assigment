@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './sass/main.scss'
 import { Element } from 'react-scroll'
-import Header from './components/Header'
+import Header from './components/Header_Footer/Header'
 import Banner from './components/Banner'
 import AboutMe from './components/AboutMe'
 import Relationships from './components/Relationships/'
 import Requirements from './components/Requirements'
 import Users from './components/Users'
 import SignUp from './components/SignUp/'
+import Footer from './components/Header_Footer/Footer'
 import axios from './axios'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
       this.state = {
          users: [],
          next: null,
+         openModal: true,
       }
    }
    loadFirstUsersPage() {
@@ -64,8 +66,14 @@ class App extends Component {
             })
          })
          .then(response => {
-            if (response.data.success) this.loadFirstUsersPage()
+            if (response.data.success) {
+               this.loadFirstUsersPage()
+               this.setState({ openModal: true })
+            }
          })
+   }
+   handleModalClose = () => {
+      this.setState({ openModal: false })
    }
    render() {
       return (
@@ -91,8 +99,13 @@ class App extends Component {
                />
             </Element>
             <Element name="signup">
-               <SignUp handleFormSubmit={this.handleFormSubmit} />
+               <SignUp
+                  handleFormSubmit={this.handleFormSubmit}
+                  openModal={this.state.openModal}
+                  handleModalClose={this.handleModalClose}
+               />
             </Element>
+            <Footer />
          </div>
       )
    }
