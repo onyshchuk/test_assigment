@@ -1,0 +1,161 @@
+.header,
+.footer {
+   &__logo {
+      // height: 2.4rem;
+      width: 13.2rem;
+      margin: 0 5px 0 -2px; // for PP
+   }
+
+   &__navigation {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      margin: 0 5rem;
+
+      & ul {
+         display: flex;
+         flex-grow: 1;
+         justify-content: space-around;
+         list-style: none;
+
+         li {
+            max-width: 11rem;
+            padding-bottom: 4px;
+            @include oneLineEllipsis;
+         }
+
+         li a,
+         li a:link,
+         li a:visited {
+            text-decoration: none;
+         }
+      }
+   }
+}
+
+.header {
+   // select container which is first div inside header
+   & > div {
+      padding: 1.2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__navigation {
+      & ul {
+         li a,
+         li a:link,
+         li a:visited {
+            color: $color-black;
+         }
+      }
+   }
+}
+
+@import './userWindow';
+
+.footer {
+   position: relative;
+   padding: 1.9rem 0 2.7rem 0;
+   background-color: $color-secondary;
+   color: $color-white;
+
+   // separation line
+   &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      display: block;
+      background-color: #5f5fc4;
+
+      position: absolute;
+      top: 8.4rem;
+   }
+
+   & > div > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__logo-nav {
+      margin-bottom: 2.2rem;
+      padding: 1.2rem 0;
+   }
+
+   &__logo {
+      display: block;
+      margin-left: 0.1rem;
+      path {
+         fill: $color-white;
+      }
+   }
+
+   &__navigation {
+      margin: 0 -0.1rem 0 auto;
+      max-width: 45.6rem;
+
+      & ul {
+         justify-content: space-between;
+
+         li a,
+         li a:link,
+         li a:visited {
+            color: $color-white;
+         }
+      }
+   }
+
+   &__contacts-links {
+      margin: 3.5rem 0 2.4rem 0;
+   }
+
+   &__contscts-icon {
+      display: inline-block;
+      width: 2.4rem;
+      height: 4.05rem;
+      margin-right: 1rem;
+
+      &--mail {
+         background: url(/../icons/mail.svg) center no-repeat;
+      }
+      &--phone {
+         background: url(/../icons/phone.svg) center no-repeat;
+      }
+      &--cellphone {
+         background: url(/../icons/cellphone.svg) center no-repeat;
+      }
+   }
+
+   &__contacts span {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 3.8rem;
+   }
+
+   &__links {
+      table {
+         text-align: right;
+         margin: -0.4rem -0.3rem 0 0;
+      }
+
+      td {
+         width: 15.8rem;
+         height: 2.8rem;
+      }
+
+      a {
+         color: $color-white;
+         text-decoration: none;
+      }
+   }
+
+   &__copyright {
+      margin-top: 0.6rem;
+   }
+
+   &__social a:not(:last-child) {
+      margin-right: 2rem;
+   }
+}
