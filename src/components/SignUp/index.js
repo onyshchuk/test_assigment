@@ -11,7 +11,11 @@ const SignUp = props => {
                Attention! After successful registration and alert, update the
                list of users in the block from the top
             </p>
-            <Form handleFormSubmit={props.handleFormSubmit} />
+            <Form
+               handleFormSubmit={props.handleFormSubmit}
+               openModal={props.openModal}
+               handleModalClose={props.handleModalClose}
+            />
          </div>
       </section>
    )
@@ -19,6 +23,8 @@ const SignUp = props => {
 
 SignUp.propTypes = {
    handleFormSubmit: PropTypes.func,
+   openModal: PropTypes.bool,
+   handleModalClose: PropTypes.func,
 }
 
 export default SignUp
