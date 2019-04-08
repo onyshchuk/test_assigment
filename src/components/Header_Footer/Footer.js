@@ -13,18 +13,37 @@ const Footer = () => {
             <div className="footer__contacts-links">
                <div className="footer__contacts">
                   <div className="footer__email">
-                     <div className="footer__contscts-icon footer__contscts-icon--mail" />
                      <a href="mailto:work.of.future@gmail.com">
-                        work.of.future@gmail.com
+                        <SVG
+                           className="footer__contacts-icon"
+                           src="./icons/mail.svg"
+                        />
+                        <span className="footer__contacts-text">
+                           work.of.future@gmail.com
+                        </span>
                      </a>
                   </div>
                   <div className="footer__phone">
-                     <div className="footer__contscts-icon footer__contscts-icon--phone" />
-                     <a href="tel:+380507892498">+38 (050) 789 24 98</a>
+                     <a href="tel:+380507892498">
+                        <SVG
+                           className="footer__contacts-icon"
+                           src="./icons/phone.svg"
+                        />
+                        <span className="footer__contacts-text">
+                           +38 (050) 789 24 98
+                        </span>
+                     </a>
                   </div>
                   <div className="footer__cellphone">
-                     <div className="footer__contscts-icon footer__contscts-icon--cellphone" />
-                     <a href="tel:+380955560845">+38 (095) 556 08 45</a>
+                     <a href="tel:+380955560845">
+                        <SVG
+                           className="footer__contacts-icon"
+                           src="./icons/cellphone.svg"
+                        />
+                        <span className="footer__contacts-text">
+                           +38 (095) 556 08 45
+                        </span>
+                     </a>
                   </div>
                </div>
                <div className="footer__links">
