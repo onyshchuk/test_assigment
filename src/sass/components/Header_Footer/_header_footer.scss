@@ -121,29 +121,46 @@
       margin: 3.5rem 0 2.4rem 0;
    }
 
-   &__contscts-icon {
+   &__contacts-icon {
       display: inline-block;
       width: 2.4rem;
       height: 4.05rem;
       margin-right: 1rem;
+      position: relative;
 
-      &--mail {
-         background: url(/../icons/mail.svg) center no-repeat;
-      }
-      &--phone {
-         background: url(/../icons/phone.svg) center no-repeat;
-      }
-      &--cellphone {
-         background: url(/../icons/cellphone.svg) center no-repeat;
+      svg {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
       }
    }
 
-   &__contacts a {
+   &__contacts-text {
       text-decoration: none;
       display: inline-block;
       vertical-align: top;
-      line-height: 3.8rem;
+      line-height: 3.9rem;
       color: $color-white;
+      transition: 0.2s color ease-in-out;
+   }
+
+   &__contacts a {
+      path,
+      polygon {
+         fill: $color-white;
+         transition: 0.2s fill ease-in-out;
+      }
+
+      &:hover {
+         span {
+            color: $color-primary;
+         }
+         path,
+         polygon {
+            fill: $color-primary;
+         }
+      }
    }
 
    &__links {
@@ -174,7 +191,7 @@
 
    &__social {
       a:not(:last-child) {
-         margin-right: 2rem;
+         margin-right: 1.65rem;
       }
 
       a path {
