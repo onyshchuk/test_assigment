@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import classNames from 'classnames'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import SVG from 'react-inlinesvg'
 import variables from './../../sass/abstracts/_variables.scss'
 import axios from '../../axios'
 
 const styles = () => ({
+   rootInput: {
+      '&$focused $outline': {
+         borderColor: 'grey',
+      },
+   },
    typography: {
       fontFamily: variables.fontPrimary,
       fontSize: '1.6rem',
@@ -17,10 +24,21 @@ const styles = () => ({
    input: {
       padding: '22px 16px 15px 16px',
    },
+   focused: {
+      $rootSelect: {
+         backgroundColor: 'green',
+      },
+   },
+   error: {
+      '&$focused $outline': {
+         borderColor: '#f44336',
+      },
+   },
+   outline: {},
    icon: {
-      fontSize: '4.8rem',
-      top: 'calc(50% - 2.4rem)',
-      right: '5px',
+      position: 'absolute',
+      top: 'calc(50% - 0.6rem)',
+      right: '21px',
    },
    helperText: {
       color: '#f44336',
@@ -28,6 +46,15 @@ const styles = () => ({
       fontSize: '1.2rem',
       margin: '6px 16px -18px',
       letterSpacing: '0.03px',
+   },
+   rootMenuItem: {
+      '&:hover': {
+         backgroundColor: variables.colorPrimaryLighter2 + ' !important',
+      },
+   },
+   selectedMenuItem: {
+      color: variables.colorPrimary,
+      backgroundColor: '#fff !important',
    },
 })
 
@@ -58,7 +85,18 @@ class Position extends Component {
    }
 
    render() {
-      const { typography, input, icon, helperText } = this.props.classes
+      const {
+         rootInput,
+         typography,
+         input,
+         focused,
+         error,
+         outline,
+         icon,
+         helperText,
+         rootMenuItem,
+         selectedMenuItem,
+      } = this.props.classes
       return (
          <FormControl variant="outlined" className={this.props.className}>
             <Select
@@ -72,11 +110,20 @@ class Position extends Component {
                   <OutlinedInput
                      labelWidth={0}
                      name="Position"
-                     classes={{ input }}
+                     classes={{
+                        root: rootInput,
+                        input,
+                        focused,
+                        error,
+                        notchedOutline: outline,
+                     }}
                   />
                }
                displayEmpty
-               classes={{ root: typography, icon }}
+               classes={{ root: typography }}
+               IconComponent={() => (
+                  <SVG className={icon} src="icons/caret-down.svg" />
+               )}
             >
                <MenuItem classes={{ root: typography }} value="" disabled>
                   Select your position
@@ -84,7 +131,10 @@ class Position extends Component {
                {this.state.positions.map(position => (
                   <MenuItem
                      key={position.id}
-                     classes={{ root: typography }}
+                     classes={{
+                        root: classNames(rootMenuItem, typography),
+                        selected: selectedMenuItem,
+                     }}
                      value={position.id}
                   >
                      {position.name}
