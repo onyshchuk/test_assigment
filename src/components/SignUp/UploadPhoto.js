@@ -7,6 +7,11 @@ import TextField from '@material-ui/core/TextField'
 import variables from './../../sass/abstracts/_variables.scss'
 
 const styles = () => ({
+   root: {
+      '&$focused $textFieldOutline': {
+         borderColor: 'grey',
+      },
+   },
    button: {
       fontFamily: variables.fontPrimary,
       borderTopLeftRadius: 0,
@@ -16,6 +21,12 @@ const styles = () => ({
    },
    input: {
       display: 'none',
+   },
+   focused: {},
+   error: {
+      '&$focused $textFieldOutline': {
+         borderColor: '#f44336',
+      },
    },
    textField: {
       margin: 0,
@@ -105,6 +116,9 @@ class UploadPhoto extends Component {
                   InputProps={{
                      readOnly: true,
                      classes: {
+                        root: classes.root,
+                        focused: classes.focused,
+                        error: classes.error,
                         notchedOutline: classes.textFieldOutline,
                         input: classes.textFieldInput,
                      },
