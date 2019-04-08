@@ -2,7 +2,9 @@
 $color-primary: #ef6c00;
 $color-primary-lighter: #fc831f;
 $color-primary-lighter-1: rgba($color-primary-lighter, 0.2);
+$color-primary-lighter-2: rgba($color-primary, 0.2);
 $color-secondary: #283593;
+$color-secondary-lighter: #2638bb;
 
 $color-grey-1: #8d8c8c;
 $color-grey-2: #fefefe;
@@ -24,6 +26,7 @@ $font-tertiary: 'PT Sans', sans-serif; // 400
    colorPrimary: $color-primary;
    colorPrimaryLighter: $color-primary-lighter;
    colorPrimaryLighter1: $color-primary-lighter-1;
+   colorPrimaryLighter2: $color-primary-lighter-2;
    colorSecondary: $color-secondary;
    colorGreyOne: $color-grey-1;
    colorGreyTwo: $color-grey-2;
