@@ -6,14 +6,33 @@ import PhoneMask from './PhoneMask'
 import variables from './../../sass/abstracts/_variables.scss'
 
 const styles = () => ({
+   root: {
+      '&$focused $outline': {
+         borderColor: 'grey',
+      },
+   },
    label: {
       fontFamily: variables.fontPrimary,
       transform: 'translate(16px, -6px) scale(0.75) !important',
+
+      '&$focused': {
+         color: 'grey',
+
+         '&$error': {
+            color: '#f44336',
+         },
+      },
    },
    input: {
       fontFamily: variables.fontPrimary,
       fontSize: '1.6rem',
       padding: '18px 16px',
+   },
+   focused: {},
+   error: {
+      '&$focused $outline': {
+         borderColor: '#f44336',
+      },
    },
    outline: {
       paddingLeft: '11px !important',
@@ -91,11 +110,16 @@ class Phone extends Component {
                shrink: true,
                classes: {
                   shrink: classes.label,
+                  focused: classes.focused,
+                  error: classes.error,
                },
             }}
             inputRef={this.inp}
             InputProps={{
                classes: {
+                  root: classes.root,
+                  focused: classes.focused,
+                  error: classes.error,
                   notchedOutline: classes.outline,
                   input: classes.input,
                },
