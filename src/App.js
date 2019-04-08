@@ -18,7 +18,7 @@ class App extends Component {
       this.state = {
          users: [],
          next: null,
-         openModal: true,
+         openModal: false,
       }
    }
    loadFirstUsersPage() {
