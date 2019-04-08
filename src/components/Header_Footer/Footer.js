@@ -14,15 +14,17 @@ const Footer = () => {
                <div className="footer__contacts">
                   <div className="footer__email">
                      <div className="footer__contscts-icon footer__contscts-icon--mail" />
-                     <span>work.of.future@gmail.com</span>
+                     <a href="mailto:work.of.future@gmail.com">
+                        work.of.future@gmail.com
+                     </a>
                   </div>
                   <div className="footer__phone">
                      <div className="footer__contscts-icon footer__contscts-icon--phone" />
-                     <span>+38 (050) 789 24 98</span>
+                     <a href="tel:+380507892498">+38 (050) 789 24 98</a>
                   </div>
                   <div className="footer__cellphone">
                      <div className="footer__contscts-icon footer__contscts-icon--cellphone" />
-                     <span>+38 (095) 556 08 45</span>
+                     <a href="tel:+380955560845">+38 (095) 556 08 45</a>
                   </div>
                </div>
                <div className="footer__links">
@@ -94,19 +96,19 @@ const Footer = () => {
                </div>
                <div className="footer__social">
                   <a href="#">
-                     <img src="icons/facebook.svg" alt="facebook" />
+                     <SVG src="icons/facebook.svg" alt="facebook" />
                   </a>
                   <a href="#">
-                     <img src="icons/linkedin.svg" alt="linkedin" />
+                     <SVG src="icons/linkedin.svg" alt="linkedin" />
                   </a>
                   <a href="#">
-                     <img src="icons/instagram.svg" alt="instagram" />
+                     <SVG src="icons/instagram.svg" alt="instagram" />
                   </a>
                   <a href="#">
-                     <img src="icons/twitter.svg" alt="twitter" />
+                     <SVG src="icons/twitter.svg" alt="twitter" />
                   </a>
                   <a href="#">
-                     <img src="icons/pinterest.svg" alt="pinterest" />
+                     <SVG src="icons/pinterest.svg" alt="pinterest" />
                   </a>
                </div>
             </div>
