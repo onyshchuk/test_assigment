@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SVG from 'react-inlinesvg'
 import axios from '../../axios'
 
 class UserWindow extends Component {
@@ -38,7 +39,7 @@ class UserWindow extends Component {
                alt={this.state.name}
             />
             <a href="#" className="user-window__signout">
-               <img src="./icons/sign-out.svg" alt="signout" />
+               <SVG src="icons/sign-out.svg" />
             </a>
          </div>
       )
