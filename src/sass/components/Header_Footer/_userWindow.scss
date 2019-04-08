@@ -36,5 +36,9 @@
       width: 2.4rem;
       height: 2rem;
       margin-right: -2px;
+
+      &:hover path {
+         fill: $color-secondary-lighter;
+      }
    }
 }
