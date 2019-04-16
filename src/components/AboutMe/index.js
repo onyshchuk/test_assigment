@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TextButton from '../Buttons/TextButton'
 import ellipsize, { nodeEllipsize } from '../../utility/ellipsize'
+import scrollToElement from '../../utility/scrollToElement'
 
 class AboutMe extends Component {
    constructor(props) {
@@ -51,7 +52,12 @@ class AboutMe extends Component {
                         speed initiatives to help improve user-experience on the
                         web.
                      </p>
-                     <TextButton id={this.buttonID}>Sign Up</TextButton>
+                     <TextButton
+                        id={this.buttonID}
+                        onClick={() => scrollToElement('signup')}
+                     >
+                        Sign Up
+                     </TextButton>
                   </div>
                </div>
             </div>

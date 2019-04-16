@@ -1,32 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import scrollToElement from '../../utility/scrollToElement'
 
 const Navigation = props => {
    return (
       <nav className={props.className}>
          <ul>
             <li>
-               <a href="#" title="About me">
+               <a title="About me" onClick={() => scrollToElement('aboutMe')}>
                   About me
                </a>
             </li>
             <li>
-               <a href="#" title="Relationships">
+               <a
+                  title="Relationships"
+                  onClick={() => scrollToElement('relationships')}
+               >
                   Relationships
                </a>
             </li>
             <li>
-               <a href="#" title="Requirements">
+               <a
+                  title="Requirements"
+                  onClick={() => scrollToElement('requirements')}
+               >
                   Requirements
                </a>
             </li>
             <li>
-               <a href="#" title="Users">
+               <a title="Users" onClick={() => scrollToElement('users')}>
                   Users
                </a>
             </li>
             <li>
-               <a href="#" title="Sign Up">
+               <a title="Sign Up" onClick={() => scrollToElement('signup')}>
                   Sign Up
                </a>
             </li>
