@@ -1,0 +1,45 @@
+.drawer-user-window {
+   padding: 3rem 2.5rem 2.5rem;
+
+   &__photo {
+      width: 6.5rem;
+      height: 6.5rem;
+      border-radius: 50%;
+      margin-bottom: 1.6rem;
+   }
+
+   &__name {
+      margin-bottom: 0.8rem;
+   }
+
+   &__email {
+      color: $color-grey-1;
+   }
+}
+
+.drawer-navigation {
+   padding: 3.2rem 2.5rem;
+
+   & ul {
+      list-style-type: none;
+
+      li:not(:last-child) {
+         margin-bottom: 2.7rem;
+      }
+
+      li:nth-child(5) {
+         margin-bottom: 3.1rem;
+      }
+
+      li a,
+      li a:link,
+      li a:visited {
+         color: $color-black;
+         transition: 0.2s color ease-in-out;
+
+         &:hover {
+            color: $color-primary;
+         }
+      }
+   }
+}
