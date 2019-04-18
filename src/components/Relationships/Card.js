@@ -15,10 +15,12 @@ class Card extends Component {
       return (
          <div className={this.props.className}>
             <img src={this.props.image} alt={this.props.title} />
-            <h3 className="heading-3" title={this.props.title}>
-               {this.props.title}
-            </h3>
-            <p id={this.paragraphID}>{this.props.content}</p>
+            <div className={this.props.className + '-wrapper'}>
+               <h3 className="heading-3" title={this.props.title}>
+                  {this.props.title}
+               </h3>
+               <p id={this.paragraphID}>{this.props.content}</p>
+            </div>
          </div>
       )
    }
