@@ -1,15 +1,31 @@
 .section-signup {
    padding-bottom: 14rem;
 
+   @include respond(desktop-2k) {
+      padding-bottom: 14.9rem;
+
+      .container {
+         padding: 0 0 0 1.5rem;
+      }
+   }
+
    .heading-2 {
       text-align: center;
       margin-bottom: 1.4rem;
+
+      @include respond(desktop-2k) {
+         margin-right: 1.5rem;
+      }
    }
 
    .signup {
       &__semiheading {
          text-align: center;
          margin-bottom: 4.8rem;
+
+         @include respond(desktop-2k) {
+            margin-right: 1.5rem;
+         }
       }
    }
 
@@ -35,12 +51,30 @@
 
       &__select {
          width: 48.5%;
+
+         @include respond(desktop-2k) {
+            width: 48.1%;
+         }
+      }
+
+      &__select-icon {
+         position: absolute;
+         top: calc(50% - 0.6rem);
+         right: 2.1rem;
+
+         @include respond(desktop-2k) {
+            right: 1.6rem;
+         }
       }
 
       &__upload {
          display: inline-block;
          margin-left: 3rem;
          width: calc(51.5% - 3rem);
+
+         @include respond(desktop-2k) {
+            width: calc(50.6% - 3rem);
+         }
 
          & > div {
             display: flex;
@@ -51,6 +85,10 @@
          display: block;
          margin: 4.1rem auto 0 auto;
          width: 29rem;
+
+         @include respond(desktop-2k) {
+            margin: 4.4rem auto 0 36.9%;
+         }
       }
    }
 }
