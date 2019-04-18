@@ -1,49 +1,47 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import SVG from 'react-inlinesvg'
-import axios from '../../axios'
 
-class UserWindow extends Component {
-   state = {
-      name: '',
-      email: '',
-      photo: '',
-   }
-
-   componentDidMount() {
-      axios.get('users/1').then(response => {
-         // first char of email to uppercase
-         let email = response.data.user.email
-         email = email.charAt(0).toUpperCase() + email.slice(1)
-         this.setState({
-            name: response.data.user.name,
-            email,
-            photo: response.data.user.photo,
-         })
-      })
-   }
-
-   render() {
-      return (
-         <div className="user-window">
-            <div className="user-window__wrapper">
-               <div className="user-window__name" title={this.state.name}>
-                  {this.state.name}
-               </div>
-               <div className="user-window__email" title={this.state.email}>
-                  {this.state.email}
-               </div>
-            </div>
+const UserWindow = props => {
+   const { name, email, photo } = props.user
+   return (
+      <div className={props.className}>
+         {props.drawer && (
             <img
-               className="user-window__photo"
-               src={this.state.photo}
-               alt={this.state.name}
+               className={props.className + '__photo'}
+               src={photo}
+               alt={name}
             />
-            <a href="#" className="user-window__signout">
-               <SVG src="icons/sign-out.svg" />
-            </a>
+         )}
+         <div className={props.className + '__wrapper'}>
+            <div className={props.className + '__name'} title={name}>
+               {name}
+            </div>
+            <div className={props.className + '__email'} title={email}>
+               {email}
+            </div>
          </div>
-      )
-   }
+
+         {!props.drawer && (
+            <div className={props.className + '__photo-signout'}>
+               <img
+                  className={props.className + '__photo'}
+                  src={photo}
+                  alt={name}
+               />
+               <a href="#" className={props.className + '__signout'}>
+                  <SVG src="icons/sign-out.svg" />
+               </a>
+            </div>
+         )}
+      </div>
+   )
+}
+
+UserWindow.propTypes = {
+   className: PropTypes.string,
+   drawer: PropTypes.bool,
+   user: PropTypes.object,
 }
 
 export default UserWindow
