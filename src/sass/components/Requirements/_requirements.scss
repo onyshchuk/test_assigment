@@ -1,13 +1,54 @@
 .section-requirements {
+   padding: 13.5rem 0 15.4rem 0;
    background: url(/../images/bg-2.jpg) no-repeat;
    background-size: 111%;
-   padding: 13.5rem 0 15.4rem 0;
+
+   @include retina {
+      background: url(/../images/bg-2@2x.jpg) no-repeat;
+      background-size: 111%;
+   }
+
+   @include respond(desktop-2k) {
+      .container {
+         padding: 0 7.8rem 0 1.5rem;
+      }
+
+      padding: 13.5rem 0 10.3rem 0;
+      background: url(/../images/bg-2_2k.jpg) no-repeat;
+      background-size: 100%;
+      background-position: top 45.5% center;
+
+      @include retina {
+         background: url(/../images/bg-2_2k@2x.jpg) no-repeat;
+         background-size: 100%;
+         background-position: top 45.5% center;
+      }
+   }
+
+   @include respond(tablet) {
+      padding: 11.5rem 0 12rem 0;
+
+      background-position: top left 52%;
+      background-size: 172%;
+   }
 
    .heading-2 {
       max-width: 100%;
       text-align: center;
       margin-bottom: 3.9rem;
       @include oneLineEllipsis;
+
+      @include respond(desktop-2k) {
+         margin-left: 6rem;
+      }
+
+      @include respond(tablet) {
+         overflow: visible;
+         white-space: normal;
+         max-width: 60%;
+         max-height: 10rem;
+         margin: 0 auto 3.7rem auto;
+      }
    }
 
    .requirements__wrapper {
@@ -17,10 +58,23 @@
          max-height: 37.7rem;
          overflow-wrap: break-word;
          word-break: break-word;
+
+         @include respond(tablet) {
+            max-height: 100rem;
+         }
       }
 
       img {
          margin: 1.5rem -2px 0 5rem;
+
+         @include respond(desktop-2k) {
+            margin: 0.5rem -2px 0 9.9rem;
+         }
+
+         @include respond(tablet) {
+            margin: 0.2rem 0 0 4rem;
+            max-height: 41rem;
+         }
       }
    }
 }
