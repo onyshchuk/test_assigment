@@ -10,7 +10,8 @@
       display: flex;
       flex-grow: 1;
       align-items: center;
-      margin: 0 5rem;
+      margin: 0 auto;
+      max-width: 48.3rem;
 
       & ul {
          display: flex;
@@ -34,12 +35,36 @@
 }
 
 .header {
-   // select container which is first div inside header
-   & > div {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: $color-white;
+   z-index: 500;
+
+   .container {
       padding: 1.2rem 5rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+
+      & > div {
+         display: flex;
+         flex-grow: 1;
+         align-items: center;
+      }
+
+      .header__drawer-icon {
+         flex-grow: 0;
+         width: 2.5rem;
+         margin: 0 0 -0.3rem auto;
+      }
+
+      @include respond(desktop-2k) {
+         padding: 1.2rem 2rem;
+      }
+
+      @include respond(tablet) {
+         padding: 2rem 2.2rem 2rem 2.7rem;
+      }
    }
 
    &__navigation {
@@ -66,8 +91,16 @@
    background-color: $color-secondary;
    color: $color-white;
 
+   @include respond(desktop-2k) {
+      padding: 1.6rem 0 2.7rem 0;
+
+      .container {
+         padding: 0 1.5rem;
+      }
+   }
+
    // separation line
-   &::after {
+   &.container::after {
       content: '';
       height: 1px;
       width: 100%;
@@ -101,6 +134,10 @@
       margin: 0 -0.1rem 0 auto;
       max-width: 45.6rem;
 
+      @include respond(desktop-2k) {
+         margin: 0 0.1rem 0 auto;
+      }
+
       & ul {
          justify-content: space-between;
 
@@ -132,7 +169,28 @@
          position: absolute;
          top: 50%;
          left: 50%;
-         transform: translate(-50%, -50%);
+      }
+
+      &--email svg {
+         transform: translate(-50%, -46%);
+
+         @include respond(desktop-2k) {
+            transform: translate(-44%, -38%);
+         }
+      }
+      &--phone svg {
+         transform: translate(-50%, -55%);
+
+         @include respond(desktop-2k) {
+            transform: translate(-44%, -52%);
+         }
+      }
+      &--cellphone svg {
+         transform: translate(-50%, -45%);
+
+         @include respond(desktop-2k) {
+            transform: translate(-44%, -42%);
+         }
       }
    }
 
@@ -172,6 +230,10 @@
       td {
          width: 15.8rem;
          height: 2.8rem;
+
+         @include respond(desktop-2k) {
+            width: 19.3rem;
+         }
       }
 
       a {
@@ -187,6 +249,10 @@
 
    &__copyright {
       margin-top: 0.6rem;
+
+      @include respond(desktop-2k) {
+         margin-top: -0.6rem;
+      }
    }
 
    &__social {
