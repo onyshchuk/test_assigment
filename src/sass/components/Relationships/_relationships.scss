@@ -1,6 +1,22 @@
 .section-relationships {
    padding-bottom: 13.8rem;
 
+   @include respond(desktop-2k) {
+      padding-bottom: 14.3rem;
+
+      .container {
+         padding: 0;
+      }
+   }
+
+   @include respond(tablet) {
+      padding-bottom: 7.4rem;
+      
+      .container {
+         padding: 0 8.8rem 0 8.8rem;
+      }
+   }
+
    .heading-2 {
       width: 60%;
       height: 10rem;
@@ -8,18 +24,58 @@
       text-align: center;
       overflow-wrap: break-word;
       word-break: break-word;
+
+      @include respond(desktop-2k) {
+         width: 54%;
+      }
+
+      @include respond(tablet) {
+         width: 100%;
+      }
    }
 
    .relationships {
       &__wrapper {
          display: flex;
+         //overflow - temp
+         overflow: hidden;
+
+         @include respond(tablet) {
+            flex-flow: column;
+         }
       }
+
       &__card {
          flex: 1;
          max-width: 33%;
 
+         @include respond(desktop-2k) {
+            &:first-child {
+               margin-left: 1.4rem;
+            }
+         }
+
+         @include respond(tablet) {
+            max-width: 100%;
+            display: flex;
+            margin-bottom: 4.5rem;
+
+            img {
+               width: 8.9rem;
+               margin: -0.8rem 3.4rem 0 0;
+            }
+         }
+
          &:not(:last-child) {
             margin-right: 3rem;
+
+            @include respond(desktop-2k) {
+               margin-right: 1.4rem;
+            }
+
+            @include respond(tablet) {
+               margin-right: 0;
+            }
          }
 
          // its messy with this paragraphs, but in order
@@ -31,18 +87,34 @@
                width: 85%;
                margin-left: 1px;
             }
+
+            @include respond(tablet) {
+               margin-bottom: 4.1rem;
+
+               p { 
+                  width:90%;
+               }
+            }
          }
 
          &:nth-child(3) {
             p {
                width: 95%;
                margin-left: 2px;
+
+               @include respond(tablet) {
+                  width: 100%;
+               }
             }
          }
 
          .heading-3 {
             margin: 2.3rem 0 1rem 0;
             @include oneLineEllipsis;
+
+            @include respond(tablet) {
+               margin: 0 0 0.6rem 0;
+            }
          }
 
          p {
