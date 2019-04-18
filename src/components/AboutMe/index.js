@@ -9,6 +9,7 @@ class AboutMe extends Component {
 
       this.paragraphID = 'aboutmeParagraph'
       this.buttonID = 'aboutmeButton'
+      this.screenWidth = 0
    }
    componentDidMount() {
       const button = document.getElementById(this.buttonID)
@@ -19,14 +20,14 @@ class AboutMe extends Component {
          ellipsize(this.paragraphID)
          nodeEllipsize(button.firstElementChild, button)
       }, 0)
+      this.screenWidth = window.screen.width
    }
-   componentDidUpdate() {}
    render() {
       return (
          <section className="section-aboutme">
             <div className="container">
                <h2 className="heading-2" title="Let's get acquainted">
-                  Let&apos;s get acquainted
+                  Let&apos;s get ac{this.screenWidth > 1170 && ' '}quainted
                </h2>
                <div className="aboutme__wrapper">
                   <img
