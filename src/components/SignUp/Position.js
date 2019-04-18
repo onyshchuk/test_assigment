@@ -35,11 +35,6 @@ const styles = () => ({
       },
    },
    outline: {},
-   icon: {
-      position: 'absolute',
-      top: 'calc(50% - 0.6rem)',
-      right: '21px',
-   },
    helperText: {
       color: '#f44336',
       fontFamily: variables.fontPrimary,
@@ -92,7 +87,6 @@ class Position extends Component {
          focused,
          error,
          outline,
-         icon,
          helperText,
          rootMenuItem,
          selectedMenuItem,
@@ -122,7 +116,10 @@ class Position extends Component {
                displayEmpty
                classes={{ root: typography }}
                IconComponent={() => (
-                  <SVG className={icon} src="icons/caret-down.svg" />
+                  <SVG
+                     className="form__select-icon"
+                     src="icons/caret-down.svg"
+                  />
                )}
             >
                <MenuItem classes={{ root: typography }} value="" disabled>
