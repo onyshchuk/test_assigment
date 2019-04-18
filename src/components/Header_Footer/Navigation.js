@@ -37,6 +37,11 @@ const Navigation = props => {
                   Sign Up
                </a>
             </li>
+            {props.drawer && (
+               <li>
+                  <a title="Sign Out">Sign Out</a>
+               </li>
+            )}
          </ul>
       </nav>
    )
@@ -44,6 +49,7 @@ const Navigation = props => {
 
 Navigation.propTypes = {
    className: PropTypes.string,
+   drawer: PropTypes.bool,
 }
 
 export default Navigation
