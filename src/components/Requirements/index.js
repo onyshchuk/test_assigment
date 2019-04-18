@@ -1,22 +1,44 @@
 import React, { Component } from 'react'
 import ellipsize from '../../utility/ellipsize'
+import throttle from 'lodash.throttle'
 
 class Requirements extends Component {
    constructor(props) {
       super(props)
 
+      this.state = {
+         screenWidth: 0,
+      }
+
       this.paragraphID = 'requirementsParagraph'
+      this.headerID = 'requirementsHeader'
    }
    componentDidMount() {
+      this.updateScreenWidth()()
+      window.addEventListener('resize', this.updateScreenWidth())
       window.setTimeout(() => {
          ellipsize(this.paragraphID)
       }, 0)
+      this.screenWidth = window.screen.width
+      if (this.state.screenWidth < 900) ellipsize(this.headerID)
    }
+
+   componentWillUnmount() {
+      window.removeEventListener('resize', this.updateScreenWidth())
+   }
+
+   updateScreenWidth = () => {
+      return throttle(() => {
+         this.setState({ screenWidth: window.screen.width })
+      }, 200)
+   }
+
    render() {
       return (
          <section className="section-requirements">
             <div className="container">
                <h2
+                  id={this.headerID}
                   className="heading-2"
                   title="General requirements for the test task"
                >
@@ -35,7 +57,8 @@ class Requirements extends Component {
                      time to evaluate your performance using our speed tools.
                      Think about how performance affects the user experience of
                      your pages and consider measuring a variety of real-world
-                     user-centric performance metrics.
+                     {this.state.screenWidth > 1170 && <br />}user-centric
+                     performance metrics.
                      <br />
                      <br />
                      Are you shipping too much JavaScript? Too many images?
@@ -45,10 +68,17 @@ class Requirements extends Component {
                      our public dataset for key UX metrics as experienced by
                      Chrome users under real-world conditions.
                   </p>
-                  <img
-                     src="images/man-laptop-v1.svg"
-                     alt="general requirements for this task"
-                  />
+                  {this.state.screenWidth > 900 ? (
+                     <img
+                        src="images/man-laptop-v1.svg"
+                        alt="general requirements for this task"
+                     />
+                  ) : (
+                     <img
+                        src="images/man-laptop-v2.svg"
+                        alt="general requirements for this task"
+                     />
+                  )}
                </div>
             </div>
          </section>
