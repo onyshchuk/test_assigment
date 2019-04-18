@@ -1,11 +1,21 @@
 .section-users {
    padding: 13.6rem 0 15.7rem 0;
 
+   @include respond(desktop-2k) {
+      .container {
+         padding: 0 5.8rem 0 1.5rem;
+      }
+   }
+
    .heading-2 {
       max-width: 100%;
       text-align: center;
       margin-bottom: 1.4rem;
       @include oneLineEllipsis;
+
+      @include respond(desktop-2k) {
+         margin-left: 4.2rem;
+      }
    }
 
    .users {
@@ -14,6 +24,10 @@
          text-align: center;
          margin-bottom: 6rem;
          @include oneLineEllipsis;
+
+         @include respond(desktop-2k) {
+            margin-left: 4.2rem;
+         }
       }
 
       &__wrapper {
@@ -27,8 +41,16 @@
             overflow: hidden;
             margin-bottom: 5.7rem;
 
+            @include respond(desktop-2k) {
+               margin-bottom: 6rem;
+            }
+
             &:not(:nth-child(3n)) {
                margin-right: 5.5%;
+
+               @include respond(desktop-2k) {
+                  margin-right: 6.5%;
+               }
             }
 
             img {
@@ -72,6 +94,10 @@
          width: 29rem;
          max-height: 4rem;
          margin: 0 auto;
+
+         @include respond(desktop-2k) {
+            margin: 0 0 0 38.8%;
+         }
       }
    }
 }
