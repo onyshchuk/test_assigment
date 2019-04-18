@@ -25,6 +25,15 @@ body {
    box-sizing: border-box;
 }
 
+.container {
+   max-width: 117rem;
+   margin: 0 auto;
+   padding: 0 4.8rem;
+
+   @include respond(tablet) {
+      padding: 0 2.4rem;
+   }
+}
 // ::selection {
 //    background-color: $color-primary;
 //    color: $color-white;
