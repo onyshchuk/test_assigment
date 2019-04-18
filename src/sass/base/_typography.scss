@@ -16,6 +16,10 @@ body {
 .heading-1 {
    font-size: 5rem;
    line-height: 1.2;
+
+   @include respond(tablet) {
+      font-size: 4.2rem;
+   }
 }
 
 .heading-2 {
@@ -49,6 +53,21 @@ body {
    p {
       font-size: 2rem;
       line-height: 2.6rem;
+
+      @include respond(tablet) {
+         letter-spacing: -0.85px;
+         line-height: 2.4rem;
+      }
+   }
+}
+
+.drawer-user-window {
+   &__name {
+      font-size: 2rem;
+   }
+
+   &__email {
+      font-size: 1.3rem;
    }
 }
 
@@ -61,6 +80,10 @@ body {
 .section-relationships {
    p {
       line-height: 1.4;
+
+      @include respond(desktop-2k) {
+         line-height: 1.35;
+      }
    }
 }
 
@@ -75,6 +98,10 @@ body {
    .users__semiheading {
       font-family: $font-tertiary;
       font-size: 1.8rem;
+
+      @include respond(desktop-2k) {
+         letter-spacing: -0.3px;
+      }
    }
 
    .user-card {
