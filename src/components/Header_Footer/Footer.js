@@ -15,7 +15,7 @@ const Footer = () => {
                   <div className="footer__email">
                      <a href="mailto:work.of.future@gmail.com">
                         <SVG
-                           className="footer__contacts-icon"
+                           className="footer__contacts-icon footer__contacts-icon--email"
                            src="./icons/mail.svg"
                         />
                         <span className="footer__contacts-text">
@@ -26,7 +26,7 @@ const Footer = () => {
                   <div className="footer__phone">
                      <a href="tel:+380507892498">
                         <SVG
-                           className="footer__contacts-icon"
+                           className="footer__contacts-icon footer__contacts-icon--phone"
                            src="./icons/phone.svg"
                         />
                         <span className="footer__contacts-text">
@@ -37,7 +37,7 @@ const Footer = () => {
                   <div className="footer__cellphone">
                      <a href="tel:+380955560845">
                         <SVG
-                           className="footer__contacts-icon"
+                           className="footer__contacts-icon footer__contacts-icon--cellphone"
                            src="./icons/cellphone.svg"
                         />
                         <span className="footer__contacts-text">
