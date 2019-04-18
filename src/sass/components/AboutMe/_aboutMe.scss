@@ -1,10 +1,26 @@
 .section-aboutme {
    padding: 13.5rem 0 12.5rem 0;
 
+   @include respond(desktop-2k) {
+      padding: 13.5rem 0 7.8rem 0;
+
+      .container {
+         padding: 0 2rem 0 4.8rem;
+      }
+   }
+
+   @include respond(tablet) {
+      padding: 11.4rem 0 13.3rem 0;
+   }
+
    .heading-2 {
       text-align: center;
       margin-bottom: 2.3rem;
       @include oneLineEllipsis;
+
+      @include respond(desktop-2k) {
+         margin: 0.2rem 1.9rem 2.3rem -1rem;
+      }
    }
 
    .aboutme {
@@ -15,16 +31,37 @@
          & > div {
             // max width of wrapper 100% - image width + image margin right
             max-width: calc(100% - 31.5rem);
+
+            @include respond(desktop-2k) {
+               max-width: calc(100% - 35rem);
+            }
+
+            @include respond(tablet) {
+               max-width: calc(100% - 24.9rem);
+            }
          }
 
          img {
             margin-right: 2.8rem;
+
+            @include respond(desktop-2k) {
+               margin: 2.3rem 6.3rem 0 0.3rem;
+            }
+
+            @include respond(tablet) {
+               width: 22rem;
+               margin-top: -2.3rem;
+            }
          }
 
          h3 {
             width: 100%;
             margin-top: 2.3rem;
             @include oneLineEllipsis;
+
+            @include respond(tablet) {
+               margin-top: 2.1rem;
+            }
          }
 
          p {
@@ -33,6 +70,17 @@
             margin: 0.8rem 0 1.75rem 2px;
             overflow-wrap: break-word;
             word-break: break-word;
+
+            @include respond(desktop-2k) {
+               height: 13.4rem;
+               margin: 0.8rem 0 0.75rem 2px;
+            }
+
+            @include respond(tablet) {
+               height: 18.4rem;
+               width: 100.2%;
+               margin: 1.2rem 0 1.1rem 2px;
+            }
          }
 
          button {
