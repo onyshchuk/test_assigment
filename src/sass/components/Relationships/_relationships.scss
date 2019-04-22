@@ -11,9 +11,23 @@
 
    @include respond(tablet) {
       padding-bottom: 7.4rem;
-      
+
       .container {
-         padding: 0 8.8rem 0 8.8rem;
+         padding: 0 8.8rem;
+      }
+   }
+
+   @include respond(tab-min) {
+      .container {
+         padding: 0 4.8rem;
+      }
+   }
+
+   @include respond(mobile) {
+      padding-bottom: 4.2rem;
+
+      .container {
+         padding: 0 1.5rem;
       }
    }
 
@@ -32,22 +46,43 @@
       @include respond(tablet) {
          width: 100%;
       }
+
+      @include respond(tab-min) {
+         width: 87.5%;
+      }
+
+      @include respond(mobile) {
+         width: 100%;
+         max-height: 6.2rem;
+         margin: 0 auto 2.9rem auto;
+      }
    }
 
    .relationships {
       &__wrapper {
          display: flex;
-         //overflow - temp
-         overflow: hidden;
 
          @include respond(tablet) {
             flex-flow: column;
+         }
+
+         @include respond(mobile) {
+            text-align: center;
          }
       }
 
       &__card {
          flex: 1;
          max-width: 33%;
+         display: flex;
+         flex-flow: column;
+         align-items: flex-start;
+
+         @include respond(desktop-2k) {
+            &:first-child {
+               margin-left: 1.4rem;
+            }
+         }
 
          @include respond(desktop-2k) {
             &:first-child {
@@ -57,12 +92,22 @@
 
          @include respond(tablet) {
             max-width: 100%;
-            display: flex;
-            margin-bottom: 4.5rem;
+            flex-flow: row;
+            margin-bottom: 4.8rem;
 
             img {
                width: 8.9rem;
-               margin: -0.8rem 3.4rem 0 0;
+               margin: 0 3.4rem 0 0;
+            }
+         }
+
+         @include respond(mobile) {
+            flex-flow: column;
+            align-items: center;
+            margin-bottom: 2.8rem;
+
+            img {
+               margin: 0 0 1.4rem 0;
             }
          }
 
@@ -86,13 +131,21 @@
             p {
                width: 85%;
                margin-left: 1px;
+
+               @include respond(tablet) {
+                  width: 90%;
+               }
+
+               @include respond(tab-min) {
+                  width: 100%;
+               }
             }
 
-            @include respond(tablet) {
-               margin-bottom: 4.1rem;
+            @include respond(mobile) {
+               margin-bottom: 3.1rem;
 
-               p { 
-                  width:90%;
+               img {
+                  margin-bottom: 1.3rem;
                }
             }
          }
@@ -105,23 +158,47 @@
                @include respond(tablet) {
                   width: 100%;
                }
+
+               @include respond(mobile) {
+                  width: 95%;
+                  margin: 0 2% 0 3%;
+               }
+            }
+
+            @include respond(mobile) {
+               img {
+                  margin-bottom: 1.6rem;
+               }
             }
          }
 
          .heading-3 {
             margin: 2.3rem 0 1rem 0;
-            @include oneLineEllipsis;
+            max-height: 5.2rem;
+
+            @include respond(desktop-2k) {
+               @include oneLineEllipsis;
+            }
 
             @include respond(tablet) {
+               @include oneLineEllipsis;
                margin: 0 0 0.6rem 0;
+            }
+
+            @include respond(mobile) {
+               margin: 0 0 0.3rem 0;
             }
          }
 
          p {
             white-space: pre-wrap;
-            max-height: 11rem;
+            max-height: 13.2rem;
             overflow-wrap: break-word;
             word-break: break-word;
+
+            @include respond(desktop-2k) {
+               max-height: 8.4rem;
+            }
          }
       }
    }
