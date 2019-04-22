@@ -109,7 +109,7 @@ const Footer = () => {
                   </table>
                </div>
             </div>
-            <div>
+            <div className="footer__copyright-social">
                <div className="footer__copyright">
                   &copy; abz.agency specially for the test task
                </div>
