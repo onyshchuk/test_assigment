@@ -6,12 +6,13 @@ class Requirements extends Component {
    constructor(props) {
       super(props)
 
-      this.state = {
-         screenWidth: 0,
-      }
+      this.state = { screenWidth: 0 }
 
       this.paragraphID = 'requirementsParagraph'
       this.headerID = 'requirementsHeader'
+      this.desktopTwoK = 1200
+      this.tablet = 900
+      this.tabletMin = 700
    }
    componentDidMount() {
       this.updateScreenWidth()()
@@ -19,7 +20,6 @@ class Requirements extends Component {
       window.setTimeout(() => {
          ellipsize(this.paragraphID)
       }, 0)
-      this.screenWidth = window.screen.width
       if (this.state.screenWidth < 900) ellipsize(this.headerID)
    }
 
@@ -57,8 +57,8 @@ class Requirements extends Component {
                      time to evaluate your performance using our speed tools.
                      Think about how performance affects the user experience of
                      your pages and consider measuring a variety of real-world
-                     {this.state.screenWidth > 1170 && <br />}user-centric
-                     performance metrics.
+                     {this.state.screenWidth > this.desktopTwoK && <br />}
+                     user-centric performance metrics.
                      <br />
                      <br />
                      Are you shipping too much JavaScript? Too many images?
@@ -68,7 +68,8 @@ class Requirements extends Component {
                      our public dataset for key UX metrics as experienced by
                      Chrome users under real-world conditions.
                   </p>
-                  {this.state.screenWidth > 900 ? (
+                  {this.state.screenWidth > this.tablet ||
+                  this.state.screenWidth <= this.tabletMin ? (
                      <img
                         src="images/man-laptop-v1.svg"
                         alt="general requirements for this task"
