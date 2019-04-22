@@ -20,15 +20,27 @@ body {
    @include respond(tablet) {
       font-size: 4.2rem;
    }
+
+   @include respond(mobile) {
+      font-size: 3rem;
+   }
 }
 
 .heading-2 {
    font-size: 4.2rem;
    line-height: 1.2;
+
+   @include respond(mobile) {
+      font-size: 2.6rem;
+   }
 }
 
 .heading-3 {
    font-size: 2.6rem;
+
+   @include respond(mobile) {
+      font-size: 2.2rem;
+   }
 }
 
 .heading-4 {
@@ -37,6 +49,10 @@ body {
 
 .heading-5 {
    font-size: 1.8rem;
+
+   @include respond(mobile) {
+      font-size: 1.6rem;
+   }
 }
 
 .paragraph-1 {
@@ -58,6 +74,18 @@ body {
          letter-spacing: -0.85px;
          line-height: 2.4rem;
       }
+
+      @include respond(mobile) {
+         font-size: 1.6rem;
+         letter-spacing: normal;
+         line-height: 2.2rem;
+      }
+   }
+
+   @include respond(mobile) {
+      .heading-1 {
+         line-height: 3.4rem;
+      }
    }
 }
 
@@ -74,6 +102,12 @@ body {
 .section-aboutme {
    p {
       line-height: 1.38;
+   }
+
+   @include respond(mobile) {
+      h3 {
+         line-height: 2.7rem;
+      }
    }
 }
 
@@ -102,16 +136,32 @@ body {
       @include respond(desktop-2k) {
          letter-spacing: -0.3px;
       }
+
+      @include respond(tablet) {
+         letter-spacing: -0.25px;
+      }
    }
 
    .user-card {
       p {
          line-height: 1.35;
       }
+
+      &__info {
+         .heading-4 {
+            @include respond(tablet) {
+               line-height: 2.4rem;
+            }
+         }
+      }
    }
 }
 
 .section-signup {
+   .signup__semiheading {
+      line-height: 2rem;
+   }
+
    .form {
       label {
          font-size: 1.6rem;
@@ -122,6 +172,15 @@ body {
 .footer {
    &__contacts {
       font-size: 2rem;
+   }
+
+   &__contacts-text {
+      line-height: 3.9rem;
+
+      @include respond(tablet) {
+         letter-spacing: -0.95px;
+         line-height: 4.3rem;
+      }
    }
 
    &__copyright {
