@@ -13,6 +13,10 @@
       padding: 11.4rem 0 13.3rem 0;
    }
 
+   @include respond(mobile) {
+      padding: 6.8rem 0 6.5rem 0;
+   }
+
    .heading-2 {
       text-align: center;
       margin-bottom: 2.3rem;
@@ -21,11 +25,19 @@
       @include respond(desktop-2k) {
          margin: 0.2rem 1.9rem 2.3rem -1rem;
       }
+
+      @include respond(mobile) {
+         margin-bottom: 0.6rem;
+      }
    }
 
    .aboutme {
       &__wrapper {
          display: flex;
+
+         @include respond(tab-min) {
+            flex-flow: column;
+         }
 
          // select right wrapper
          & > div {
@@ -38,6 +50,16 @@
 
             @include respond(tablet) {
                max-width: calc(100% - 24.9rem);
+            }
+
+            @include respond(tab-min) {
+               max-width: 90%;
+               text-align: center;
+               margin: 0 auto;
+            }
+
+            @include respond(mobile) {
+               max-width: 100%;
             }
          }
 
@@ -52,6 +74,15 @@
                width: 22rem;
                margin-top: -2.3rem;
             }
+
+            @include respond(tab-min) {
+               width: 50%;
+               margin: 2rem auto;
+            }
+
+            @include respond(mobile) {
+               width: 75.5%;
+            }
          }
 
          h3 {
@@ -62,10 +93,16 @@
             @include respond(tablet) {
                margin-top: 2.1rem;
             }
+
+            @include respond(mobile) {
+               white-space: normal;
+               max-width: 90%;
+               margin: 0.7rem auto 0 auto;
+            }
          }
 
          p {
-            height: 15.4rem;
+            max-height: 17.6rem;
             width: 100.2%;
             margin: 0.8rem 0 1.75rem 2px;
             overflow-wrap: break-word;
@@ -77,9 +114,14 @@
             }
 
             @include respond(tablet) {
-               height: 18.4rem;
+               max-height: 22rem;
                width: 100.2%;
-               margin: 1.2rem 0 1.1rem 2px;
+               margin: 1.2rem 0 1.9rem 2px;
+            }
+
+            @include respond(mobile) {
+               margin: 1rem 0 1.5rem 0;
+               max-height: 26.4rem;
             }
          }
 
