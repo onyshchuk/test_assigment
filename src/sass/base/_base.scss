@@ -33,6 +33,10 @@ body {
    @include respond(tablet) {
       padding: 0 2.4rem;
    }
+
+   @include respond(mobile) {
+      padding: 0 1.5rem;
+   }
 }
 // ::selection {
 //    background-color: $color-primary;
