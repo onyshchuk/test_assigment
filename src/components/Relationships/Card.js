@@ -6,17 +6,32 @@ class Card extends Component {
    constructor(props) {
       super(props)
 
+      this.headerID = 'relationshipCardHeader' + this.props.idSuffix
       this.paragraphID = 'relationshipCardParagraph' + this.props.idSuffix
+      this.desktopTwoK = 1200
+      this.tablet = 900
    }
    componentDidMount() {
-      ellipsize(this.paragraphID)
+      window.setTimeout(() => {
+         ellipsize(this.paragraphID)
+         if (
+            this.props.screenWidth < this.desktopTwoK &&
+            this.props.screenWidth > this.tablet
+         ) {
+            ellipsize(this.headerID)
+         }
+      }, 0)
    }
    render() {
       return (
          <div className={this.props.className}>
             <img src={this.props.image} alt={this.props.title} />
             <div className={this.props.className + '-wrapper'}>
-               <h3 className="heading-3" title={this.props.title}>
+               <h3
+                  id={this.headerID}
+                  className="heading-3"
+                  title={this.props.title}
+               >
                   {this.props.title}
                </h3>
                <p id={this.paragraphID}>{this.props.content}</p>
@@ -32,6 +47,7 @@ Card.propTypes = {
    content: PropTypes.string,
    className: PropTypes.string,
    idSuffix: PropTypes.string,
+   screenWidth: PropTypes.number,
 }
 
 export default Card
