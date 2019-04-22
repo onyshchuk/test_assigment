@@ -5,28 +5,12 @@
       padding-bottom: 14.9rem;
 
       .container {
-         padding: 0 0 0 1.5rem;
+         padding: 0 1.5rem 0 1.5rem;
       }
    }
 
-   .heading-2 {
-      text-align: center;
-      margin-bottom: 1.4rem;
-
-      @include respond(desktop-2k) {
-         margin-right: 1.5rem;
-      }
-   }
-
-   .signup {
-      &__semiheading {
-         text-align: center;
-         margin-bottom: 4.8rem;
-
-         @include respond(desktop-2k) {
-            margin-right: 1.5rem;
-         }
-      }
+   @include respond(tablet) {
+      padding-bottom: 12rem;
    }
 
    .heading-2,
@@ -35,17 +19,53 @@
       @include oneLineEllipsis;
    }
 
+   .heading-2 {
+      text-align: center;
+      margin-bottom: 1.4rem;
+
+      @include respond(tablet) {
+         margin-bottom: 2.4rem;
+      }
+   }
+
+   .signup {
+      &__semiheading {
+         text-align: center;
+         margin-bottom: 4.8rem;
+
+         @include respond(tablet) {
+            white-space: normal;
+            max-width: 56%;
+            margin: 0 auto 3.7rem auto;
+         }
+      }
+   }
+
    .form {
       &__input {
-         width: 31%;
+         width: calc(33.3% - 2rem);
          margin-bottom: 4rem;
 
+         @include respond(tab-min) {
+            width: 90%;
+            margin: 2rem 5%;
+         }
+
          &--email {
-            width: 31.5%;
+            width: calc(33.4% - 2rem);
+
+            @include respond(tab-min) {
+               width: 90%;
+               margin: 2rem 5%;
+            }
          }
 
          &:not(:nth-child(3)) {
             margin-right: 3rem;
+
+            @include respond(tab-min) {
+               margin-right: 5%;
+            }
          }
       }
 
@@ -53,7 +73,16 @@
          width: 48.5%;
 
          @include respond(desktop-2k) {
-            width: 48.1%;
+            width: 48.8%;
+         }
+
+         @include respond(tablet) {
+            width: 47.9%;
+         }
+
+         @include respond(tab-min) {
+            width: 90%;
+            margin: 2rem 5%;
          }
       }
 
@@ -65,6 +94,10 @@
          @include respond(desktop-2k) {
             right: 1.6rem;
          }
+
+         @include respond(tablet) {
+            right: 1.3rem;
+         }
       }
 
       &__upload {
@@ -73,11 +106,28 @@
          width: calc(51.5% - 3rem);
 
          @include respond(desktop-2k) {
-            width: calc(50.6% - 3rem);
+            width: calc(51.2% - 3rem);
+         }
+
+         @include respond(tablet) {
+            width: calc(52% - 3rem);
+         }
+
+         @include respond(tab-min) {
+            width: 90%;
+            margin: 2rem 5%;
          }
 
          & > div {
             display: flex;
+         }
+      }
+
+      &__upload-helpertext {
+         white-space: nowrap;
+
+         @include respond(mobile) {
+            white-space: normal;
          }
       }
 
@@ -87,7 +137,7 @@
          width: 29rem;
 
          @include respond(desktop-2k) {
-            margin: 4.4rem auto 0 36.9%;
+            margin: 4.4rem auto 0 auto;
          }
       }
    }
