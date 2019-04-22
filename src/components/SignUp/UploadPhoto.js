@@ -2,9 +2,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import classNames from 'classnames'
 import SecondaryButton from './../Buttons/SecondaryButton'
 import TextField from '@material-ui/core/TextField'
+import throttle from 'lodash.throttle'
 import variables from './../../sass/abstracts/_variables.scss'
+import SVG from 'react-inlinesvg'
 
 const styles = () => ({
    root: {
@@ -56,7 +59,25 @@ class UploadPhoto extends Component {
       this.state = {
          photoName: '',
          error: '',
+         screenWidth: 0,
       }
+
+      this.mobile = 600
+   }
+
+   componentDidMount() {
+      this.updateScreenWidth()()
+      window.addEventListener('resize', this.updateScreenWidth())
+   }
+
+   componentWillUnmount() {
+      window.removeEventListener('resize', this.updateScreenWidth())
+   }
+
+   updateScreenWidth = () => {
+      return throttle(() => {
+         this.setState({ screenWidth: window.screen.width })
+      }, 200)
    }
 
    validate = file => {
@@ -125,7 +146,10 @@ class UploadPhoto extends Component {
                   }}
                   FormHelperTextProps={{
                      classes: {
-                        root: classes.helperText,
+                        root: classNames(
+                           classes.helperText,
+                           'form__upload-helpertext'
+                        ),
                      },
                   }}
                   variant="outlined"
@@ -141,7 +165,11 @@ class UploadPhoto extends Component {
                            })
                      }}
                   >
-                     Upload
+                     {this.screenWidth > this.mobile ? (
+                        'Upload'
+                     ) : (
+                        <SVG src="icons/upload.svg" alt="upload" />
+                     )}
                   </SecondaryButton>
                </label>
             </div>
