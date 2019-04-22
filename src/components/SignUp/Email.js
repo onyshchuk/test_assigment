@@ -25,7 +25,7 @@ const styles = () => ({
    input: {
       fontFamily: variables.fontPrimary,
       fontSize: '1.6rem',
-      padding: '18px 18.5px',
+      padding: '18px 18.5px 19px 18.5px',
    },
    focused: {},
    error: {
@@ -70,7 +70,7 @@ class Email extends Component {
          <TextField
             className={className}
             label="Email"
-            placeholder="Your Email"
+            placeholder="Your email"
             name="email"
             type="email"
             autoComplete="email"
