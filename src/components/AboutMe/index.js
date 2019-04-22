@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import TextButton from '../Buttons/TextButton'
 import ellipsize, { nodeEllipsize } from '../../utility/ellipsize'
 import scrollToElement from '../../utility/scrollToElement'
+import throttle from 'lodash.throttle'
 
 class AboutMe extends Component {
    constructor(props) {
       super(props)
 
+      this.state = { screenWidth: 0 }
+
       this.paragraphID = 'aboutmeParagraph'
       this.buttonID = 'aboutmeButton'
-      this.screenWidth = 0
    }
    componentDidMount() {
+      this.updateScreenWidth()()
+      window.addEventListener('resize', this.updateScreenWidth())
       const button = document.getElementById(this.buttonID)
       // here ellipsize function should be called asynchonous
       // (after all synchronus code) because <br /> block height
@@ -20,14 +24,24 @@ class AboutMe extends Component {
          ellipsize(this.paragraphID)
          nodeEllipsize(button.firstElementChild, button)
       }, 0)
-      this.screenWidth = window.screen.width
    }
+   componentWillUnmount() {
+      window.removeEventListener('resize', this.updateScreenWidth())
+   }
+
+   updateScreenWidth = () => {
+      return throttle(() => {
+         this.setState({ screenWidth: window.screen.width })
+      }, 200)
+   }
+
    render() {
       return (
          <section className="section-aboutme">
             <div className="container">
                <h2 className="heading-2" title="Let's get acquainted">
-                  Let&apos;s get ac{this.screenWidth > 1170 && ' '}quainted
+                  Let&apos;s get ac{this.state.screenWidth > 1170 && ' '}
+                  quainted
                </h2>
                <div className="aboutme__wrapper">
                   <img
