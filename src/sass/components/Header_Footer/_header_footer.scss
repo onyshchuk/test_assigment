@@ -1,7 +1,6 @@
 .header,
 .footer {
    &__logo {
-      // height: 2.4rem;
       width: 13.2rem;
       margin: 0 5px 0 -2px; // for PP
    }
@@ -56,6 +55,15 @@
          flex-grow: 0;
          width: 2.5rem;
          margin: 0 0 -0.3rem auto;
+         padding: 1rem 0;
+
+         @include respond(tablet) {
+            padding: 0;
+         }
+
+         @include respond(mobile) {
+            margin: 0 0 0 auto;
+         }
       }
 
       @include respond(desktop-2k) {
@@ -64,6 +72,10 @@
 
       @include respond(tablet) {
          padding: 2rem 2.2rem 2rem 2.7rem;
+      }
+
+      @include respond(mobile) {
+         padding: 2rem 1.3rem 2rem 2rem;
       }
    }
 
@@ -99,8 +111,12 @@
       }
    }
 
+   @include respond(tablet) {
+      padding: 1.9rem 0 3rem 0;
+   }
+
    // separation line
-   &.container::after {
+   & .container::after {
       content: '';
       height: 1px;
       width: 100%;
@@ -109,6 +125,11 @@
 
       position: absolute;
       top: 8.4rem;
+      left: 0;
+
+      @include respond(tab-min) {
+         top: 23.4rem;
+      }
    }
 
    & > div > div {
@@ -120,6 +141,11 @@
    &__logo-nav {
       margin-bottom: 2.2rem;
       padding: 1.2rem 0;
+
+      @include respond(tab-min) {
+         flex-flow: column;
+         margin-bottom: 0;
+      }
    }
 
    &__logo {
@@ -138,8 +164,27 @@
          margin: 0 0.1rem 0 auto;
       }
 
+      @include respond(tablet) {
+         margin: 0 0 0 auto;
+      }
+
+      @include respond(tab-min) {
+         margin: 2rem auto 0 auto;
+      }
+
       & ul {
          justify-content: space-between;
+
+         @include respond(tab-min) {
+            flex-flow: column;
+            text-align: center;
+         }
+
+         @include respond(tab-min) {
+            li {
+               margin: 0.3rem 0;
+            }
+         }
 
          li a,
          li a:link,
@@ -156,6 +201,15 @@
 
    &__contacts-links {
       margin: 3.5rem 0 2.4rem 0;
+
+      @include respond(tablet) {
+         margin: 3.5rem 0 2.6rem 0;
+      }
+
+      @include respond(tab-min) {
+         flex-flow: column;
+         text-align: center;
+      }
    }
 
    &__contacts-icon {
@@ -164,6 +218,10 @@
       height: 4.05rem;
       margin-right: 1rem;
       position: relative;
+
+      @include respond(tablet) {
+         display: none;
+      }
 
       svg {
          position: absolute;
@@ -198,7 +256,6 @@
       text-decoration: none;
       display: inline-block;
       vertical-align: top;
-      line-height: 3.9rem;
       color: $color-white;
       transition: 0.2s color ease-in-out;
    }
@@ -222,13 +279,25 @@
    }
 
    &__links {
+      flex: 1;
+
       table {
          text-align: right;
          margin: -0.4rem -0.3rem 0 0;
+         width: 96%;
+         margin-left: auto;
+
+         @include respond(tablet) {
+            width: 97%;
+         }
+
+         @include respond(tab-min) {
+            display: none;
+         }
       }
 
       td {
-         width: 15.8rem;
+         width: 25%;
          height: 2.8rem;
 
          @include respond(desktop-2k) {
@@ -246,6 +315,11 @@
          }
       }
    }
+   @include respond(tab-min) {
+      &__copyright-social {
+         flex-flow: column-reverse;
+      }
+   }
 
    &__copyright {
       margin-top: 0.6rem;
@@ -253,11 +327,19 @@
       @include respond(desktop-2k) {
          margin-top: -0.6rem;
       }
+
+      @include respond(tablet) {
+         margin-top: -0.6rem;
+      }
    }
 
    &__social {
       a:not(:last-child) {
          margin-right: 1.65rem;
+
+         @include respond(tablet) {
+            margin-right: 1.7rem;
+         }
       }
 
       a path {
@@ -267,6 +349,10 @@
 
       a:hover path {
          fill: $color-primary;
+      }
+
+      @include respond(tab-min) {
+         margin-bottom: 2rem;
       }
    }
 }
