@@ -128,7 +128,7 @@
       left: 0;
 
       @include respond(tab-min) {
-         top: 23.4rem;
+         top: 22.5rem;
       }
    }
 
@@ -151,8 +151,14 @@
    &__logo {
       display: block;
       margin-left: 0.1rem;
+
       path {
          fill: $color-white;
+      }
+
+      @include respond(tab-min) {
+         width: 13.3rem;
+         margin: 0;
       }
    }
 
@@ -169,7 +175,7 @@
       }
 
       @include respond(tab-min) {
-         margin: 2rem auto 0 auto;
+         margin: 1.3rem auto 0 auto;
       }
 
       & ul {
@@ -209,6 +215,7 @@
       @include respond(tab-min) {
          flex-flow: column;
          text-align: center;
+         margin: 3.3rem 0 2.1rem 0;
       }
    }
 
@@ -330,6 +337,10 @@
 
       @include respond(tablet) {
          margin-top: -0.6rem;
+      }
+
+      @include respond(tab-min) {
+         margin-top: -0.4rem;
       }
    }
 

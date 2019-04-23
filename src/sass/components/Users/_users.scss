@@ -11,6 +11,10 @@
       padding: 11.6rem 0 13.5rem 0;
    }
 
+   @include respond(mobile) {
+      padding: 6.7rem 0 6.8rem 0;
+   }
+
    .heading-2 {
       max-width: 100%;
       text-align: center;
@@ -36,6 +40,13 @@
          @include respond(tablet) {
             margin-bottom: 4.1rem;
          }
+
+         @include respond(mobile) {
+            white-space: normal;
+            max-width: 60%;
+            margin: 0 auto 3.1rem auto;
+            max-height: 4.2rem;
+         }
       }
 
       &__wrapper {
@@ -60,6 +71,11 @@
                margin-bottom: 3.7rem;
             }
 
+            @include respond(mobile) {
+               width: 100%;
+               margin-bottom: 3.1rem;
+            }
+
             &:not(:nth-child(3n)) {
                margin-right: 5.5%;
 
@@ -70,6 +86,10 @@
                @include respond(tablet) {
                   margin-right: 4.5%;
                }
+
+               @include respond(mobile) {
+                  margin-right: 0;
+               }
             }
 
             img {
@@ -77,6 +97,7 @@
                width: 7rem;
                height: 7rem;
                border-radius: 50%;
+               background-color: $color-secondary;
 
                @include respond(tablet) {
                   margin-right: 0;

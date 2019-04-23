@@ -1,13 +1,13 @@
 .section-banner {
    background: url(/images/bg-1.jpg) no-repeat;
-   background-size: 100%;
+   background-size: cover;
    padding: 13.3rem 0 15.8rem 0;
    margin-top: 6.4rem;
 
    // HD/Retina CSS
    @include retina {
       background: url(/images/bg-1@2x.jpg) no-repeat;
-      background-size: 100%;
+      background-size: cover;
    }
 
    @include respond(desktop-2k) {
@@ -15,16 +15,24 @@
          padding: 0 1.6rem;
       }
 
-      background: url(/images/bg-1_2k.jpg) no-repeat;
-      background-size: 100%;
+      background: url(/images/bg-1_FHD.jpg) no-repeat center;
+      background-size: cover;
       padding: 13.3rem 0 14rem 0;
-      background-position: top 30.5% right;
 
       // HD/Retina CSS
       @include retina {
+         background: url(/images/bg-1_FHD@2x.jpg) no-repeat center;
+         background-size: cover;
+      }
+   }
+
+   @include respond(images-2k) {
+      background: url(/images/bg-1_2k.jpg) no-repeat;
+      background-size: cover;
+
+      @include retina {
          background: url(/images/bg-1_2k@2x.jpg) no-repeat;
-         background-size: 100%;
-         background-position: top 30.5% right;
+         background-size: cover;
       }
    }
 
@@ -41,6 +49,13 @@
 
    @include respond(mobile) {
       padding: 6.6rem 0 7rem 0;
+      background: url(/images/bg-1_mobile.jpg) no-repeat center;
+      background-size: cover;
+
+      @include retina {
+         background: url(/images/bg-1_mobile@2x.jpg) no-repeat center;
+         background-size: cover;
+      }
    }
 
    .heading-1 {

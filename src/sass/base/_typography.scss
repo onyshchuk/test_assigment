@@ -140,6 +140,11 @@ body {
       @include respond(tablet) {
          letter-spacing: -0.25px;
       }
+
+      @include respond(mobile) {
+         font-size: 1.6rem;
+         line-height: 2.1rem;
+      }
    }
 
    .user-card {
@@ -160,6 +165,11 @@ body {
 .section-signup {
    .signup__semiheading {
       line-height: 2rem;
+
+      @include respond(mobile) {
+         font-size: 1.6rem;
+         line-height: 2.2rem;
+      }
    }
 
    .form {
@@ -180,6 +190,12 @@ body {
       @include respond(tablet) {
          letter-spacing: -0.95px;
          line-height: 4.3rem;
+      }
+
+      @include respond(tab-min) {
+         font-size: 1.8rem;
+         letter-spacing: 0;
+         line-height: 3.5rem;
       }
    }
 

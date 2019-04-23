@@ -34,6 +34,12 @@
          @content;
       } // 1200+px
    }
+   @if $breakpoint == images-2k {
+      @media only screen and (min-width: 120em) {
+         @content;
+         // 1920+px
+      }
+   }
 }
 
 @mixin retina {
