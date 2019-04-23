@@ -16,8 +16,9 @@ class Card extends Component {
    }
 
    addDefaultSrc = e => {
-      e.target.src = '/images/unknown.jpeg'
+      e.target.src = '/icons/cover-icon-user.svg'
    }
+
    render() {
       return (
          <div className={this.props.className} ref={this.card}>
