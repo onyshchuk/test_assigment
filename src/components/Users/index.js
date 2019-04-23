@@ -2,18 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from './Card'
 import SecondaryButton from '../Buttons/SecondaryButton'
-import { nodeEllipsize } from '../../utility/ellipsize'
+import ellipsize, { nodeEllipsize } from '../../utility/ellipsize'
 
 class Users extends Component {
    constructor(props) {
       super(props)
 
       this.buttonID = 'usersButton'
+      this.semiheadingID = 'usersSemiheading'
    }
    componentDidMount() {
       const button = document.getElementById(this.buttonID)
       if (button) nodeEllipsize(button.firstElementChild, button)
+      window.setTimeout(() => {
+         if (this.props.screenWidth <= this.props.breakpoints.mobile)
+            ellipsize(this.semiheadingID)
+      }, 0)
    }
+
    render() {
       return (
          <section className="section-users">
@@ -22,6 +28,7 @@ class Users extends Component {
                   Our cheerful users
                </h1>
                <p
+                  id={this.semiheadingID}
                   className="users__semiheading"
                   title="Attention! Sorting users by registration date"
                >
@@ -62,6 +69,8 @@ Users.propTypes = {
    users: PropTypes.array,
    next: PropTypes.string,
    handleUsersClick: PropTypes.func,
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default Users
