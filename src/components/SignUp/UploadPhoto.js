@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 import SecondaryButton from './../Buttons/SecondaryButton'
 import TextField from '@material-ui/core/TextField'
-import throttle from 'lodash.throttle'
 import variables from './../../sass/abstracts/_variables.scss'
 import SVG from 'react-inlinesvg'
 
@@ -21,6 +20,13 @@ const styles = () => ({
       borderBottomLeftRadius: 0,
       padding: '12px 31px',
       marginLeft: '-1px',
+   },
+   buttonSmall: {
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+      padding: '14.5px 5px 6.5px 5px',
+      marginLeft: '-1px',
+      minWidth: '55px',
    },
    input: {
       display: 'none',
@@ -59,25 +65,7 @@ class UploadPhoto extends Component {
       this.state = {
          photoName: '',
          error: '',
-         screenWidth: 0,
       }
-
-      this.mobile = 600
-   }
-
-   componentDidMount() {
-      this.updateScreenWidth()()
-      window.addEventListener('resize', this.updateScreenWidth())
-   }
-
-   componentWillUnmount() {
-      window.removeEventListener('resize', this.updateScreenWidth())
-   }
-
-   updateScreenWidth = () => {
-      return throttle(() => {
-         this.setState({ screenWidth: window.screen.width })
-      }, 200)
    }
 
    validate = file => {
@@ -117,6 +105,7 @@ class UploadPhoto extends Component {
 
    render() {
       const { classes, className } = this.props
+      const { mobile } = this.props.breakpoints
       return (
          <div className={className}>
             <div>
@@ -157,7 +146,11 @@ class UploadPhoto extends Component {
                <label htmlFor="uploadPhoto">
                   <SecondaryButton
                      component="span"
-                     className={classes.button}
+                     className={
+                        this.props.screenWidth > mobile
+                           ? classes.button
+                           : classes.buttonSmall
+                     }
                      onClick={() => {
                         if (!this.state.photoName)
                            this.setState({
@@ -165,7 +158,7 @@ class UploadPhoto extends Component {
                            })
                      }}
                   >
-                     {this.screenWidth > this.mobile ? (
+                     {this.props.screenWidth > mobile ? (
                         'Upload'
                      ) : (
                         <SVG src="icons/upload.svg" alt="upload" />
@@ -182,6 +175,8 @@ UploadPhoto.propTypes = {
    classes: PropTypes.object.isRequired,
    className: PropTypes.string,
    onChange: PropTypes.func.isRequired,
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default withStyles(styles)(UploadPhoto)
