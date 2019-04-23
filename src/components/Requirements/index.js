@@ -1,39 +1,25 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ellipsize from '../../utility/ellipsize'
-import throttle from 'lodash.throttle'
 
 class Requirements extends Component {
    constructor(props) {
       super(props)
 
-      this.state = { screenWidth: 0 }
-
       this.paragraphID = 'requirementsParagraph'
       this.headerID = 'requirementsHeader'
-      this.desktopTwoK = 1200
-      this.tablet = 900
-      this.tabletMin = 700
    }
+
    componentDidMount() {
-      this.updateScreenWidth()()
-      window.addEventListener('resize', this.updateScreenWidth())
       window.setTimeout(() => {
          ellipsize(this.paragraphID)
+         if (this.props.screenWidth < this.props.breakpoints.tablet)
+            ellipsize(this.headerID)
       }, 0)
-      if (this.state.screenWidth < 900) ellipsize(this.headerID)
-   }
-
-   componentWillUnmount() {
-      window.removeEventListener('resize', this.updateScreenWidth())
-   }
-
-   updateScreenWidth = () => {
-      return throttle(() => {
-         this.setState({ screenWidth: window.screen.width })
-      }, 200)
    }
 
    render() {
+      const { tablet, tabMin } = this.props.breakpoints
       return (
          <section className="section-requirements">
             <div className="container">
@@ -56,9 +42,8 @@ class Requirements extends Component {
                      If you&apos;re a developer working on a site, now is a good
                      time to evaluate your performance using our speed tools.
                      Think about how performance affects the user experience of
-                     your pages and consider measuring a variety of real-world
-                     {this.state.screenWidth > this.desktopTwoK && <br />}
-                     user-centric performance metrics.
+                     your pages and consider measuring a variety of
+                     real&#8209;world user&#8209;centric performance metrics.
                      <br />
                      <br />
                      Are you shipping too much JavaScript? Too many images?
@@ -66,10 +51,10 @@ class Requirements extends Component {
                      to the page weight that affect page load time based on data
                      from HTTP Archive and the Chrome User Experience Report -
                      our public dataset for key UX metrics as experienced by
-                     Chrome users under real-world conditions.
+                     Chrome users under real&#8209;world conditions.
                   </p>
-                  {this.state.screenWidth > this.tablet ||
-                  this.state.screenWidth <= this.tabletMin ? (
+                  {this.props.screenWidth > tablet ||
+                  this.props.screenWidth <= tabMin ? (
                      <img
                         src="images/man-laptop-v1.svg"
                         alt="general requirements for this task"
@@ -85,6 +70,11 @@ class Requirements extends Component {
          </section>
       )
    }
+}
+
+Requirements.propTypes = {
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default Requirements
