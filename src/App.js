@@ -10,6 +10,7 @@ import Users from './components/Users'
 import SignUp from './components/SignUp/'
 import Footer from './components/Header_Footer/Footer'
 import axios from './axios'
+import throttle from 'lodash.throttle'
 
 class App extends Component {
    constructor(props) {
@@ -19,10 +20,39 @@ class App extends Component {
          users: [],
          next: null,
          openModal: false,
+         screenWidth: 0,
+      }
+
+      this.breakpoints = {
+         desktopTwoK: 1200,
+         navMenu: 1000,
+         tablet: 900,
+         tabMin: 700,
+         mobile: 600,
       }
    }
+
+   componentDidMount() {
+      this.updateScreenWidth()()
+      window.addEventListener('resize', this.updateScreenWidth())
+      window.setTimeout(() => {
+         this.loadFirstUsersPage()
+      }, 0)
+   }
+
+   componentWillUnmount() {
+      window.removeEventListener('resize', this.updateScreenWidth())
+   }
+
+   updateScreenWidth = () => {
+      return throttle(() => {
+         this.setState({ screenWidth: window.screen.width })
+      }, 200)
+   }
+
    loadFirstUsersPage() {
-      axios.get('users?page=1&count=6').then(response => {
+      let count = this.state.screenWidth <= 600 ? 3 : 6
+      axios.get('users?page=1&count=' + count).then(response => {
          let next = response.data.links.next_url.split('/v1/')[1]
          let users = response.data.users.sort(
             (a, b) => b.registration_timestamp - a.registration_timestamp
@@ -33,9 +63,7 @@ class App extends Component {
          })
       })
    }
-   componentDidMount() {
-      this.loadFirstUsersPage()
-   }
+
    handleUsersClick = () => {
       if (this.state.next) {
          axios.get(this.state.next).then(response => {
@@ -78,24 +106,41 @@ class App extends Component {
    render() {
       return (
          <div className="App">
-            <Header />
+            <Header
+               screenWidth={this.state.screenWidth}
+               breakpoints={this.breakpoints}
+            />
             <Element name="banner">
-               <Banner />
+               <Banner
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
+               />
             </Element>
             <Element name="aboutMe">
-               <AboutMe />
+               <AboutMe
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
+               />
             </Element>
             <Element name="relationships">
-               <Relationships />
+               <Relationships
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
+               />
             </Element>
             <Element name="requirements">
-               <Requirements />
+               <Requirements
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
+               />
             </Element>
             <Element name="users">
                <Users
                   users={this.state.users}
                   next={this.state.next}
                   handleUsersClick={this.handleUsersClick}
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
                />
             </Element>
             <Element name="signup">
@@ -103,6 +148,8 @@ class App extends Component {
                   handleFormSubmit={this.handleFormSubmit}
                   openModal={this.state.openModal}
                   handleModalClose={this.handleModalClose}
+                  screenWidth={this.state.screenWidth}
+                  breakpoints={this.breakpoints}
                />
             </Element>
             <Footer />
