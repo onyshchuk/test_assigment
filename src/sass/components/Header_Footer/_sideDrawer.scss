@@ -1,6 +1,18 @@
 .drawer-user-window {
    padding: 3rem 2.5rem 2.5rem;
 
+   @include respond(mobile) {
+      padding: 3rem 1.5rem 2.5rem;
+   }
+
+   &__paper {
+      width: 26rem;
+
+      @include respond(mobile) {
+         width: 25rem;
+      }
+   }
+
    &__photo {
       width: 6.5rem;
       height: 6.5rem;
@@ -19,6 +31,10 @@
 
 .drawer-navigation {
    padding: 3.2rem 2.5rem;
+
+   @include respond(mobile) {
+      padding: 3.2rem 1.5rem;
+   }
 
    & ul {
       list-style-type: none;

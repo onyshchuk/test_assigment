@@ -1,22 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
 import Navigation from './Navigation'
 import UserWindow from './UserWindow'
 
-const styles = () => ({
-   paper: {
-      width: '26rem',
-   },
-})
-
 const SideDrawer = props => {
-   const { paper } = props.classes
    return (
       <Drawer
-         classes={{ paper }}
+         classes={{ paper: 'drawer-user-window__paper' }}
          open={props.open}
          onClose={props.toggleDrawer}
       >
@@ -38,4 +30,4 @@ SideDrawer.propTypes = {
    user: PropTypes.object,
 }
 
-export default withStyles(styles)(SideDrawer)
+export default SideDrawer
