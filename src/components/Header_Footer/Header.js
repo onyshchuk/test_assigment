@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Navigation from './Navigation'
 import UserWindow from './UserWindow'
 import SideDrawer from './SideDrawer'
 import SVG from 'react-inlinesvg'
-import throttle from 'lodash.throttle'
 import axios from '../../axios'
 
 class Header extends Component {
@@ -12,7 +12,6 @@ class Header extends Component {
 
       this.state = {
          drawerOpen: false,
-         screenWidth: 0,
          user: {
             name: '',
             email: '',
@@ -22,8 +21,6 @@ class Header extends Component {
    }
 
    componentDidMount() {
-      this.updateScreenWidth()()
-      window.addEventListener('resize', this.updateScreenWidth())
       axios.get('users/1').then(response => {
          // first char of email to uppercase
          let email = response.data.user.email
@@ -33,16 +30,6 @@ class Header extends Component {
       })
    }
 
-   componentWillUnmount() {
-      window.removeEventListener('resize', this.updateScreenWidth())
-   }
-
-   updateScreenWidth = () => {
-      return throttle(() => {
-         this.setState({ screenWidth: window.screen.width })
-      }, 200)
-   }
-
    toggleDrawer = () => {
       this.setState(prevState => ({
          drawerOpen: !prevState.drawerOpen,
@@ -50,6 +37,7 @@ class Header extends Component {
    }
 
    render() {
+      const { navMenu } = this.props.breakpoints
       return (
          <header className="header">
             <div className="container">
@@ -58,7 +46,7 @@ class Header extends Component {
                   src="./images/logo.svg"
                   alt="avz.agency"
                />
-               {this.state.screenWidth > 1000 ? (
+               {this.props.screenWidth > navMenu ? (
                   <div>
                      <Navigation className="header__navigation" />
                      <UserWindow
@@ -75,7 +63,7 @@ class Header extends Component {
                   </div>
                )}
             </div>
-            {this.state.screenWidth < 1000 && (
+            {this.props.screenWidth < navMenu && (
                <SideDrawer
                   open={this.state.drawerOpen}
                   toggleDrawer={this.toggleDrawer}
@@ -85,6 +73,11 @@ class Header extends Component {
          </header>
       )
    }
+}
+
+Header.propTypes = {
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default Header

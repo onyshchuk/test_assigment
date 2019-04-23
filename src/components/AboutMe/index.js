@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import TextButton from '../Buttons/TextButton'
 import ellipsize, { nodeEllipsize } from '../../utility/ellipsize'
 import scrollToElement from '../../utility/scrollToElement'
-import throttle from 'lodash.throttle'
 
 class AboutMe extends Component {
    constructor(props) {
       super(props)
 
-      this.state = { screenWidth: 0 }
-
       this.paragraphID = 'aboutmeParagraph'
       this.buttonID = 'aboutmeButton'
+      this.semiheaderID = 'aboutmeSemiheader'
    }
    componentDidMount() {
-      this.updateScreenWidth()()
-      window.addEventListener('resize', this.updateScreenWidth())
       const button = document.getElementById(this.buttonID)
       // here ellipsize function should be called asynchonous
       // (after all synchronus code) because <br /> block height
@@ -23,24 +20,19 @@ class AboutMe extends Component {
       window.setTimeout(() => {
          ellipsize(this.paragraphID)
          nodeEllipsize(button.firstElementChild, button)
+         if (this.props.screenWidth <= this.props.breakpoints.mobile)
+            ellipsize(this.semiheaderID)
       }, 0)
-   }
-   componentWillUnmount() {
-      window.removeEventListener('resize', this.updateScreenWidth())
-   }
-
-   updateScreenWidth = () => {
-      return throttle(() => {
-         this.setState({ screenWidth: window.screen.width })
-      }, 200)
    }
 
    render() {
+      const { desktopTwoK } = this.props.breakpoints
       return (
          <section className="section-aboutme">
             <div className="container">
                <h2 className="heading-2" title="Let's get acquainted">
-                  Let&apos;s get ac{this.state.screenWidth > 1170 && ' '}
+                  Let&apos;s get ac
+                  {this.props.screenWidth > desktopTwoK && ' '}
                   quainted
                </h2>
                <div className="aboutme__wrapper">
@@ -50,6 +42,7 @@ class AboutMe extends Component {
                   />
                   <div>
                      <h3
+                        id={this.semiheaderID}
                         className="heading-3"
                         title="I am cool frontend developer"
                      >
@@ -79,6 +72,11 @@ class AboutMe extends Component {
          </section>
       )
    }
+}
+
+AboutMe.propTypes = {
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default AboutMe
