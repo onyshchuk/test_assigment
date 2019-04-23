@@ -10,16 +10,20 @@ import PrimaryButton from '../Buttons/PrimaryButton'
 import Modal from './Modal'
 
 class Form extends Component {
-   state = {
-      name: '',
-      nameValid: false,
-      email: '',
-      emailValid: false,
-      phone: '',
-      phoneValid: false,
-      position: '',
-      positionValid: false,
-      photo: '',
+   constructor(props) {
+      super(props)
+
+      this.state = {
+         name: '',
+         nameValid: false,
+         email: '',
+         emailValid: false,
+         phone: '',
+         phoneValid: false,
+         position: '',
+         positionValid: false,
+         photo: '',
+      }
    }
 
    handleChange = stateName => e => {
@@ -30,6 +34,7 @@ class Form extends Component {
    isValid = stateName => valid => {
       this.setState({ [stateName]: valid })
    }
+
    handleSubmit = e => {
       const formData = new FormData()
       formData.append('name', this.state.name)
@@ -39,6 +44,7 @@ class Form extends Component {
       formData.append('photo', this.state.photo)
       this.props.handleFormSubmit(e, formData)
    }
+
    render() {
       const buttonDisabled =
          !this.state.nameValid ||
@@ -81,6 +87,8 @@ class Form extends Component {
             <UploadPhoto
                className="form__upload"
                onChange={this.handleChange('photo')}
+               screenWidth={this.props.screenWidth}
+               breakpoints={this.props.breakpoints}
             />
             <PrimaryButton
                type="submit"
@@ -102,6 +110,8 @@ Form.propTypes = {
    handleFormSubmit: PropTypes.func,
    openModal: PropTypes.bool,
    handleModalClose: PropTypes.func,
+   screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default Form
