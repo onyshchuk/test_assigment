@@ -13,6 +13,7 @@ const styles = () => ({
    dialog: {
       width: '29rem',
       height: '17.8rem',
+      margin: '0',
    },
    title: {
       fontSize: '2.3rem',
