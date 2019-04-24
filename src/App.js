@@ -46,7 +46,7 @@ class App extends Component {
 
    updateScreenWidth = () => {
       return throttle(() => {
-         this.setState({ screenWidth: window.screen.width })
+         this.setState({ screenWidth: window.innerWidth })
       }, 200)
    }
 
