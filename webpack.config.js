@@ -1,6 +1,8 @@
 /*global require module __dirname*/
 const path = require('path')
+const TerserJSPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = (env, options) => {
    const isProduction = options.mode === 'production'
@@ -27,12 +29,25 @@ module.exports = (env, options) => {
                      options: { sourceMap: true },
                   },
                   {
+                     loader: 'postcss-loader',
+                     options: {
+                        plugins: () => [
+                           require('autoprefixer')({
+                              browsers: ['> 1%', 'last 2 versions'],
+                           }),
+                        ],
+                     },
+                  },
+                  {
                      loader: 'sass-loader',
                      options: { sourceMap: true },
                   },
                ],
             },
          ],
+      },
+      optimization: {
+         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
       },
       plugins: [new MiniCssExtractPlugin({ filename: 'styles.css' })],
       devtool: isProduction ? 'source-map' : 'inline-source-map',
