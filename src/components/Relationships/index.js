@@ -32,6 +32,7 @@ class Relationships extends Component {
                         this.props.screenWidth <= mobile ? '\n' : ''
                      }is the standard markup language for creating web pages and web applications.`}
                      screenWidth={this.props.screenWidth}
+                     breakpoints={this.props.breakpoints}
                   />
                   <Card
                      idSuffix="card-2"
@@ -45,6 +46,7 @@ class Relationships extends Component {
                            : ''
                      }is a style sheet language used for describing the presentation of a document written in a markup language like HTML.`}
                      screenWidth={this.props.screenWidth}
+                     breakpoints={this.props.breakpoints}
                   />
                   <Card
                      idSuffix="card-3"
@@ -59,6 +61,7 @@ class Relationships extends Component {
                            : ''
                      } It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.`}
                      screenWidth={this.props.screenWidth}
+                     breakpoints={this.props.breakpoints}
                   />
                </div>
             </div>

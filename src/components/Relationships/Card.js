@@ -14,9 +14,10 @@ class Card extends Component {
    componentDidMount() {
       window.setTimeout(() => {
          ellipsize(this.paragraphID)
+         const { desktopTwoK, tablet } = this.props.breakpoints
          if (
-            this.props.screenWidth < this.desktopTwoK &&
-            this.props.screenWidth > this.tablet
+            this.props.screenWidth < desktopTwoK &&
+            this.props.screenWidth > tablet
          ) {
             ellipsize(this.headerID)
          }
@@ -48,6 +49,7 @@ Card.propTypes = {
    className: PropTypes.string,
    idSuffix: PropTypes.string,
    screenWidth: PropTypes.number,
+   breakpoints: PropTypes.object,
 }
 
 export default Card
