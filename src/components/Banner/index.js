@@ -14,10 +14,12 @@ class Banner extends Component {
    }
 
    componentDidMount() {
-      ellipsize(this.headerID)
-      ellipsize(this.paragraphID)
-      const button = document.getElementById(this.buttonID)
-      nodeEllipsize(button.firstElementChild, button)
+      window.setTimeout(() => {
+         ellipsize(this.headerID)
+         ellipsize(this.paragraphID)
+         const button = document.getElementById(this.buttonID)
+         nodeEllipsize(button.firstElementChild, button)
+      }, 0)
    }
 
    render() {

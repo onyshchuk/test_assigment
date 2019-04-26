@@ -13,11 +13,8 @@ class AboutMe extends Component {
       this.semiheaderID = 'aboutmeSemiheader'
    }
    componentDidMount() {
-      const button = document.getElementById(this.buttonID)
-      // here ellipsize function should be called asynchonous
-      // (after all synchronus code) because <br /> block height
-      // renders with some delay and scrollHeight is incorrect
       window.setTimeout(() => {
+         const button = document.getElementById(this.buttonID)
          ellipsize(this.paragraphID)
          nodeEllipsize(button.firstElementChild, button)
          if (this.props.screenWidth <= this.props.breakpoints.mobile)

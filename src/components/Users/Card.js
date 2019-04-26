@@ -11,8 +11,10 @@ class Card extends Component {
    }
 
    componentDidMount() {
-      ellipsize(this.nameID)
-      ellipsize(this.positionID)
+      window.setTimeout(() => {
+         ellipsize(this.nameID)
+         ellipsize(this.positionID)
+      }, 0)
    }
 
    addDefaultSrc = e => {

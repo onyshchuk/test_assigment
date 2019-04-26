@@ -12,9 +12,9 @@ class Users extends Component {
       this.semiheadingID = 'usersSemiheading'
    }
    componentDidMount() {
-      const button = document.getElementById(this.buttonID)
-      if (button) nodeEllipsize(button.firstElementChild, button)
       window.setTimeout(() => {
+         const button = document.getElementById(this.buttonID)
+         if (button) nodeEllipsize(button.firstElementChild, button)
          if (this.props.screenWidth <= this.props.breakpoints.mobile)
             ellipsize(this.semiheadingID)
       }, 0)

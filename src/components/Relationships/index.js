@@ -11,7 +11,9 @@ class Relationships extends Component {
    }
 
    componentDidMount() {
-      ellipsize(this.headerID)
+      window.setTimeout(() => {
+         ellipsize(this.headerID)
+      })
    }
 
    render() {
