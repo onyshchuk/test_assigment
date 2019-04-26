@@ -45,6 +45,7 @@ const styles = () => ({
       fontSize: '1.6rem',
       fontFamily: variables.fontPrimary,
       padding: '18px 16px',
+      lineHeight: '20px',
    },
    textFieldOutline: {
       borderTopRightRadius: 0,

@@ -26,6 +26,7 @@ const styles = () => ({
       fontFamily: variables.fontPrimary,
       fontSize: '1.6rem',
       padding: '18px 16px',
+      lineHeight: '20px',
    },
    focused: {},
    error: {
