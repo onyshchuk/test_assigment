@@ -10,7 +10,7 @@ class AboutMe extends Component {
 
       this.paragraphID = 'aboutmeParagraph'
       this.buttonID = 'aboutmeButton'
-      this.semiheaderID = 'aboutmeSemiheader'
+      this.semiheadingID = 'aboutmeSemiheading'
    }
    componentDidMount() {
       window.setTimeout(() => {
@@ -18,7 +18,7 @@ class AboutMe extends Component {
          ellipsize(this.paragraphID)
          nodeEllipsize(button.firstElementChild, button)
          if (this.props.screenWidth <= this.props.breakpoints.mobile)
-            ellipsize(this.semiheaderID)
+            ellipsize(this.semiheadingID)
       }, 0)
    }
 
@@ -39,7 +39,7 @@ class AboutMe extends Component {
                   />
                   <div>
                      <h3
-                        id={this.semiheaderID}
+                        id={this.semiheadingID}
                         className="heading-3"
                         title="I am cool frontend developer"
                      >
