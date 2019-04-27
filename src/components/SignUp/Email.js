@@ -51,6 +51,9 @@ class Email extends Component {
       this.state = {
          error: '',
       }
+
+      // for google audit Accesibility
+      this.inputID = 'formEmailInputID'
    }
 
    validate = isValid => {
@@ -82,6 +85,7 @@ class Email extends Component {
             helperText={this.state.error}
             InputLabelProps={{
                shrink: true,
+               htmlFor: this.inputID,
                classes: {
                   shrink: classes.label,
                   focused: classes.focused,
@@ -89,6 +93,7 @@ class Email extends Component {
                },
             }}
             InputProps={{
+               id: this.inputID,
                classes: {
                   root: classes.root,
                   focused: classes.focused,

@@ -57,6 +57,9 @@ class Phone extends Component {
          cursorPosition: 5,
          error: '',
       }
+
+      // for google audit Accesibility
+      this.inputID = 'formPhoneInputID'
    }
 
    handleChange = (e, onChange) => {
@@ -109,6 +112,7 @@ class Phone extends Component {
             onBlur={() => this.validate(isValid)}
             InputLabelProps={{
                shrink: true,
+               htmlFor: this.inputID,
                classes: {
                   shrink: classes.label,
                   focused: classes.focused,
@@ -117,6 +121,7 @@ class Phone extends Component {
             }}
             inputRef={this.inp}
             InputProps={{
+               id: this.inputID,
                classes: {
                   root: classes.root,
                   focused: classes.focused,

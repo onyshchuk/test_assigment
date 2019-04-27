@@ -67,6 +67,9 @@ class UploadPhoto extends Component {
          photoName: '',
          error: '',
       }
+
+      // for google audit Accesibility
+      this.inputID = 'formUploadPhotoInputID'
    }
 
    validate = file => {
@@ -126,6 +129,7 @@ class UploadPhoto extends Component {
                   value={this.state.error || this.state.photoName}
                   InputProps={{
                      readOnly: true,
+                     id: this.inputID,
                      classes: {
                         root: classes.root,
                         focused: classes.focused,
@@ -144,27 +148,29 @@ class UploadPhoto extends Component {
                   }}
                   variant="outlined"
                />
-               <label htmlFor="uploadPhoto">
-                  <SecondaryButton
-                     component="span"
-                     className={
-                        this.props.screenWidth > mobile
-                           ? classes.button
-                           : classes.buttonSmall
-                     }
-                     onClick={() => {
-                        if (!this.state.photoName)
-                           this.setState({
-                              error: 'Photo is required',
-                           })
-                     }}
-                  >
-                     {this.props.screenWidth > mobile ? (
-                        'Upload'
-                     ) : (
-                        <SVG src="icons/upload.svg" alt="upload" />
-                     )}
-                  </SecondaryButton>
+               <label htmlFor={this.inputID}>
+                  <label htmlFor="uploadPhoto">
+                     <SecondaryButton
+                        component="span"
+                        className={
+                           this.props.screenWidth > mobile
+                              ? classes.button
+                              : classes.buttonSmall
+                        }
+                        onClick={() => {
+                           if (!this.state.photoName)
+                              this.setState({
+                                 error: 'Photo is required',
+                              })
+                        }}
+                     >
+                        {this.props.screenWidth > mobile ? (
+                           'Upload'
+                        ) : (
+                           <SVG src="icons/upload.svg" alt="upload" />
+                        )}
+                     </SecondaryButton>
+                  </label>
                </label>
             </div>
          </div>

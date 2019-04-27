@@ -51,6 +51,9 @@ class Name extends Component {
       this.state = {
          error: '',
       }
+
+      // for google audit Accesibility
+      this.inputID = 'formNameInputID'
    }
 
    validate = isValid => {
@@ -81,6 +84,7 @@ class Name extends Component {
             helperText={this.state.error}
             InputLabelProps={{
                shrink: true,
+               htmlFor: this.inputID,
                classes: {
                   shrink: classes.label,
                   focused: classes.focused,
@@ -88,6 +92,7 @@ class Name extends Component {
                },
             }}
             InputProps={{
+               id: this.inputID,
                classes: {
                   root: classes.root,
                   focused: classes.focused,
