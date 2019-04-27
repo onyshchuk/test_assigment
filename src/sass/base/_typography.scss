@@ -48,6 +48,8 @@ body {
 }
 
 .heading-5 {
+   font-family: $font-primary;
+   font-weight: 400;
    font-size: 1.8rem;
 
    @include respond(mobile) {
@@ -55,9 +57,14 @@ body {
    }
 }
 
+// thre is no paragraph with such line height
+// I believe it's a typo and should be 2rem (desktop & 2K)
+// and 1.8rem (tablet & mobile)
 .paragraph-1 {
    font-size: 1.8rem;
 }
+
+//paragraph-2 is a base fontSize
 
 .paragraph-3 {
    font-size: 1.4rem;
@@ -129,20 +136,18 @@ body {
 }
 
 .section-users {
-   .users__semiheading {
-      font-family: $font-tertiary;
-      font-size: 1.8rem;
+   .heading-5 {
+      letter-spacing: 0.25px;
 
       @include respond(desktop-2k) {
-         letter-spacing: -0.3px;
+         letter-spacing: 0;
       }
 
       @include respond(tablet) {
-         letter-spacing: -0.25px;
+         letter-spacing: 0;
       }
 
       @include respond(mobile) {
-         font-size: 1.6rem;
          line-height: 2.1rem;
       }
    }
@@ -154,8 +159,10 @@ body {
 
       &__info {
          .heading-4 {
-            @include respond(tablet) {
-               line-height: 2.4rem;
+            line-height: 2.5rem;
+
+            @include respond(desktop-2k) {
+               line-height: 1.6rem;
             }
          }
       }
@@ -163,7 +170,7 @@ body {
 }
 
 .section-signup {
-   .signup__semiheading {
+   .heading-5 {
       line-height: 2rem;
 
       @include respond(mobile) {

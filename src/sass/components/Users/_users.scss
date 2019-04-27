@@ -26,29 +26,29 @@
       }
    }
 
-   .users {
-      &__semiheading {
-         max-width: 100%;
-         text-align: center;
-         margin-bottom: 6rem;
-         @include oneLineEllipsis;
+   .heading-5 {
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 6rem;
+      @include oneLineEllipsis;
 
-         @include respond(desktop-2k) {
-            margin-left: 4.2rem;
-         }
-
-         @include respond(tablet) {
-            margin-bottom: 4.1rem;
-         }
-
-         @include respond(mobile) {
-            white-space: normal;
-            max-width: 60%;
-            margin: 0 auto 3.1rem auto;
-            max-height: 4.2rem;
-         }
+      @include respond(desktop-2k) {
+         margin-left: 4.2rem;
       }
 
+      @include respond(tablet) {
+         margin-bottom: 3.9rem;
+      }
+
+      @include respond(mobile) {
+         white-space: normal;
+         max-width: 60%;
+         margin: 0 auto 3.1rem auto;
+         max-height: 4.2rem;
+      }
+   }
+
+   .users {
       &__wrapper {
          display: flex;
          flex-wrap: wrap;
@@ -114,7 +114,7 @@
 
                .heading-4 {
                   width: 100%;
-                  margin: 2.7rem 0 1rem 0;
+                  margin: 2.7rem 0 0.8rem 0;
                   overflow-wrap: break-word;
                   word-break: break-word;
 
