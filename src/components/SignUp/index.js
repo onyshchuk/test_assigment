@@ -8,11 +8,11 @@ const SignUp = props => {
       <section className="section-signup">
          <div className="container">
             <h2 className="heading-2">Register to get a work</h2>
-            <p className="signup__semiheading paragraph-1">
+            <h3 className="heading-5">
                Attention! After successful registration and alert, update the
                list of users{props.screenWidth <= mobile ? <br /> : ' '}in the
                block from the top
-            </p>
+            </h3>
             <Form
                handleFormSubmit={props.handleFormSubmit}
                openModal={props.openModal}

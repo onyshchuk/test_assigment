@@ -24,16 +24,16 @@ class Users extends Component {
       return (
          <section className="section-users">
             <div className="container">
-               <h1 className="heading-2" title="Our cheerful users">
+               <h2 className="heading-2" title="Our cheerful users">
                   Our cheerful users
-               </h1>
-               <p
+               </h2>
+               <h3
                   id={this.semiheadingID}
-                  className="users__semiheading"
+                  className="heading-5"
                   title="Attention! Sorting users by registration date"
                >
                   Attention! Sorting users by registration date
-               </p>
+               </h3>
                <div className="users__wrapper">
                   {this.props.users.map(user => (
                      <Card
