@@ -6,8 +6,13 @@ class Card extends Component {
    constructor(props) {
       super(props)
 
+      this.state = {
+         formatedPhone: '',
+      }
+
       this.nameID = 'userName' + this.props.idSuffix
       this.positionID = 'userPosition' + this.props.idSuffix
+      this.formatedPhone = ''
    }
 
    componentDidMount() {
@@ -15,6 +20,16 @@ class Card extends Component {
          ellipsize(this.nameID)
          ellipsize(this.positionID)
       }, 0)
+      this.formatPhone()
+   }
+
+   formatPhone() {
+      let formatedPhone = this.props.phone.slice(0, 3) + ' ('
+      formatedPhone += this.props.phone.slice(3, 6) + ') '
+      formatedPhone += this.props.phone.slice(6, 9) + ' '
+      formatedPhone += this.props.phone.slice(9, 11) + ' '
+      formatedPhone += this.props.phone.slice(11, 13)
+      this.setState({ formatedPhone })
    }
 
    addDefaultSrc = e => {
@@ -40,7 +55,7 @@ class Card extends Component {
                   {this.props.email}
                </p>
                <p className="paragraph-3" title={this.props.phone}>
-                  {this.props.phone}
+                  {this.state.formatedPhone}
                </p>
             </div>
          </div>
