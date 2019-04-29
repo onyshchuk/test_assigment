@@ -160,10 +160,6 @@ body {
       &__info {
          .heading-4 {
             line-height: 2.5rem;
-
-            @include respond(desktop-2k) {
-               line-height: 1.6rem;
-            }
          }
       }
    }
