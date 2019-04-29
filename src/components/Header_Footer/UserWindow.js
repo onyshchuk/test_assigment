@@ -29,7 +29,11 @@ const UserWindow = props => {
                   src={photo}
                   alt={name}
                />
-               <a href="#" className={props.className + '__signout'}>
+               <a
+                  href="#"
+                  aria-label="sign-out"
+                  className={props.className + '__signout'}
+               >
                   <SVG src="icons/sign-out.svg" />
                </a>
             </div>

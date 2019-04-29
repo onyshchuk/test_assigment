@@ -157,6 +157,7 @@ class UploadPhoto extends Component {
                               ? classes.button
                               : classes.buttonSmall
                         }
+                        aria-label="upload"
                         onClick={() => {
                            if (!this.state.photoName)
                               this.setState({

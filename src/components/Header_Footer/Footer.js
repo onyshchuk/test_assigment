@@ -114,19 +114,19 @@ const Footer = () => {
                   &copy; abz.agency specially for the test task
                </div>
                <div className="footer__social">
-                  <a href="#">
+                  <a href="#" aria-label="facebook">
                      <SVG src="icons/facebook.svg" alt="facebook" />
                   </a>
-                  <a href="#">
+                  <a href="#" aria-label="linkedin">
                      <SVG src="icons/linkedin.svg" alt="linkedin" />
                   </a>
-                  <a href="#">
+                  <a href="#" aria-label="instagram">
                      <SVG src="icons/instagram.svg" alt="instagram" />
                   </a>
-                  <a href="#">
+                  <a href="#" aria-label="twitter">
                      <SVG src="icons/twitter.svg" alt="twitter" />
                   </a>
-                  <a href="#">
+                  <a href="#" aria-label="pinterest">
                      <SVG src="icons/pinterest.svg" alt="pinterest" />
                   </a>
                </div>
