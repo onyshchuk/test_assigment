@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
 import Navigation from './Navigation'
 import UserWindow from './UserWindow'
 import SideDrawer from './SideDrawer'
 import SVG from 'react-inlinesvg'
 import axios from '../../axios'
+import variables from '../../sass/abstracts/_variables.scss'
+
+const styles = () => ({
+   colorDefault: {
+      color: variables.colorBlack,
+      backgroundColor: variables.colorWhite,
+   },
+})
 
 class Header extends Component {
    constructor(props) {
@@ -38,8 +48,9 @@ class Header extends Component {
 
    render() {
       const { navMenu } = this.props.breakpoints
+      const { colorDefault } = this.props.classes
       return (
-         <header className="header">
+         <AppBar className="header" color="default" classes={{ colorDefault }}>
             <div className="container">
                <img
                   className="header__logo"
@@ -70,14 +81,15 @@ class Header extends Component {
                   user={this.state.user}
                />
             )}
-         </header>
+         </AppBar>
       )
    }
 }
 
 Header.propTypes = {
+   classes: PropTypes.object.isRequired,
    screenWidth: PropTypes.number,
    breakpoints: PropTypes.object,
 }
 
-export default Header
+export default withStyles(styles)(Header)
