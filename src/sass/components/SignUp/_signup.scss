@@ -180,3 +180,17 @@
       }
    }
 }
+
+.modal {
+   &__title {
+      width: 100%;
+      @include oneLineEllipsis;
+   }
+
+   &__button {
+      max-width: 50%;
+      max-height: 3rem;
+      overflow-wrap: break-word;
+      word-break: break-word;
+   }
+}
