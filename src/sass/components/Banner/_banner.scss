@@ -49,11 +49,11 @@
 
    @include respond(mobile) {
       padding: 6.6rem 0 7rem 0;
-      background: url(/images/bg-1_mobile.jpg) no-repeat center;
+      background: url(/images/bg-1_mobile.jpg) no-repeat;
       background-size: cover;
 
       @include retina {
-         background: url(/images/bg-1_mobile@2x.jpg) no-repeat center;
+         background: url(/images/bg-1_mobile@2x.jpg) no-repeat;
          background-size: cover;
       }
    }

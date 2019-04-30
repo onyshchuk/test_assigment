@@ -85,7 +85,7 @@
             margin-right: 3rem;
 
             @include respond(tab-min) {
-               margin-right: 5%;
+               margin-right: 0;
             }
          }
       }
