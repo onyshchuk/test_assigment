@@ -76,7 +76,6 @@ class Modal extends Component {
                      classes={{ root: text }}
                   >
                      You have succesfully passed the registration
-                     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                   </DialogContentText>
                </DialogContent>
                <DialogActions className={button}>
