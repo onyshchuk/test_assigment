@@ -42,12 +42,13 @@ class Modal extends Component {
       this.buttonID = 'modalButtonID'
    }
 
-   componentDidMount() {
-      window.setTimeout(() => {
-         ellipsize('alert-dialog-description')
-         const button = document.getElementById(this.buttonID)
-         nodeEllipsize(button.firstElementChild, button)
-      }, 0)
+   componentDidUpdate() {
+      if (this.props.open)
+         window.setTimeout(() => {
+            ellipsize('alert-dialog-description')
+            const button = document.getElementById(this.buttonID)
+            nodeEllipsize(button.firstElementChild, button)
+         }, 0)
    }
 
    render() {
@@ -75,6 +76,7 @@ class Modal extends Component {
                      classes={{ root: text }}
                   >
                      You have succesfully passed the registration
+                     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                   </DialogContentText>
                </DialogContent>
                <DialogActions className={button}>
